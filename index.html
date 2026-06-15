@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stormlight Archive Atlas</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar" aria-label="Site header">
+        <a class="brand" href="#top" aria-label="Stormlight Archive Atlas home">
+          <span class="brand-mark" aria-hidden="true">SA</span>
+          <span>
+            <span class="brand-title">Stormlight Archive Atlas</span>
+            <span class="brand-subtitle">Reader-aware companion</span>
+          </span>
+        </a>
+
+        <div class="topbar-actions">
+          <span class="shield-pill" id="shieldStatus">Spoiler Shield Active</span>
+          <label class="progress-select">
+            <span>Read through</span>
+            <select id="progressSelect" aria-label="Read through book">
+              <option value="0">No books yet</option>
+              <option value="1">The Way of Kings</option>
+              <option value="2">Words of Radiance</option>
+              <option value="2.5">Edgedancer</option>
+              <option value="3">Oathbringer</option>
+              <option value="3.5">Dawnshard</option>
+              <option value="4">Rhythm of War</option>
+              <option value="5">Wind and Truth</option>
+            </select>
+          </label>
+        </div>
+      </header>
+
+      <main id="top" class="experience">
+        <section class="hero-stage" aria-labelledby="siteTitle">
+          <div class="hero-overlay">
+            <div class="hero-copy">
+              <p class="eyebrow">Roshar, filtered by your page in the journey</p>
+              <h1 id="siteTitle">Explore the world without crossing your spoiler line.</h1>
+              <p class="hero-lede">
+                Browse places, people, and artifacts.<br>
+                Events stay gated to your progress.
+              </p>
+            </div>
+
+            <form class="control-panel" aria-label="Atlas controls">
+              <div class="field-block">
+                <label for="searchInput">Search</label>
+                <input id="searchInput" type="search" placeholder="Name, place, item">
+              </div>
+
+              <fieldset class="field-block">
+                <legend>Lens</legend>
+                <div class="segmented-control" role="tablist" aria-label="Atlas lens">
+                  <button class="segment is-active" type="button" data-category="world" role="tab" aria-selected="true">World</button>
+                  <button class="segment" type="button" data-category="characters" role="tab" aria-selected="false">Characters</button>
+                  <button class="segment" type="button" data-category="items" role="tab" aria-selected="false">Items</button>
+                </div>
+              </fieldset>
+
+              <label class="toggle-row">
+                <input id="lockedToggle" type="checkbox" checked>
+                <span>Show locked entries</span>
+              </label>
+            </form>
+          </div>
+        </section>
+
+        <section class="atlas-layout" aria-label="Interactive atlas">
+          <aside class="reader-panel" aria-label="Reader state">
+            <div>
+              <p class="panel-kicker">Current threshold</p>
+              <h2 id="thresholdTitle">No books yet</h2>
+              <p id="thresholdCopy" class="muted-copy"></p>
+            </div>
+            <div class="book-meter" id="bookMeter" aria-label="Book progress meter"></div>
+            <div class="policy-list" aria-label="Spoiler rules">
+              <span>Names hidden when locked</span>
+              <span>Timeline details redacted</span>
+              <span>Single reveals require confirmation</span>
+            </div>
+          </aside>
+
+          <section class="detail-panel" aria-live="polite" aria-label="Selected entry">
+            <div class="detail-meta">
+              <span id="detailType">World</span>
+              <span id="detailBook">No books yet</span>
+            </div>
+            <h2 id="detailTitle">Choose an entry</h2>
+            <p id="detailBody" class="detail-body"></p>
+            <div class="tag-row" id="detailTags"></div>
+            <div class="detail-actions" id="detailActions"></div>
+          </section>
+
+          <section class="card-grid" id="cardGrid" aria-label="Atlas entries"></section>
+        </section>
+
+        <section class="timeline-panel" aria-label="Timeline">
+          <div class="timeline-header">
+            <div>
+              <p class="panel-kicker">Timeline</p>
+              <h2 id="timelineTitle">Major events</h2>
+            </div>
+            <div class="timeline-controls">
+              <button id="prevEvent" class="icon-button" type="button" title="Previous event" aria-label="Previous event">&lt;</button>
+              <button id="nextEvent" class="icon-button" type="button" title="Next event" aria-label="Next event">&gt;</button>
+            </div>
+          </div>
+
+          <div class="timeline-scrubber" id="timelineScrubber">
+            <input id="timelineRange" type="range" min="0" value="0" step="1" aria-label="Timeline scrubber">
+            <div class="timeline-markers" id="timelineMarkers" aria-hidden="true"></div>
+          </div>
+
+          <article class="timeline-card" id="timelineCard"></article>
+        </section>
+      </main>
+    </div>
+
+    <dialog class="reveal-dialog" id="revealDialog" aria-labelledby="revealTitle">
+      <h2 id="revealTitle">Reveal locked entry?</h2>
+      <p id="revealCopy"></p>
+      <div class="dialog-actions">
+        <button id="cancelReveal" type="button" class="button-secondary">Cancel</button>
+        <button id="confirmReveal" type="button" class="button-primary">Reveal this entry</button>
+      </div>
+    </dialog>
+  </body>
+</html>
