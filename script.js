@@ -431,12 +431,202 @@ const timelineEvents = [
   }
 ];
 
+const worldRegions = [
+  {
+    id: "alethkar",
+    name: "Alethkar",
+    type: "Vorin kingdom",
+    threshold: gate("twok", 0),
+    map: {
+      path: "M530 145 L690 120 L760 205 L735 325 L605 355 L505 275 Z",
+      labelX: 626,
+      labelY: 238,
+      tone: "storm"
+    },
+    summary: "A powerful eastern kingdom shaped by warfare, highstorms, brightlord politics, and Vorin social codes.",
+    culture: "Alethi society is hierarchical, militarized, and status-conscious. Lighteyes and darkeyes structure public life, while highprinces compete through armies, wealth, and reputation.",
+    costumes: "Nobility favor formal coats, uniforms, jewelry, and dresses such as havahs. Vorin women's fashion commonly covers the safehand, while soldiers and officers lean toward practical uniforms and armor.",
+    religion: "Vorinism is dominant, with ardents serving religious, scholarly, and social roles. Calling, glory, gendered arts, and eye color all matter in public expectation.",
+    physical: "Alethi are often described with tan skin, dark hair, and tall builds.",
+    characters: [
+      { name: "Kaladin", threshold: gate("twok", 1), note: "A soldier and bridgeman whose story begins in Alethkar's social order." },
+      { name: "Jasnah Kholin", threshold: gate("twok", 3), note: "A royal scholar whose reputation cuts against comfortable Vorin assumptions." },
+      { name: "Dalinar Kholin", threshold: gate("twok", 12), note: "A highprince caught between conquest, memory, and responsibility." }
+    ]
+  },
+  {
+    id: "shattered-plains",
+    name: "Shattered Plains",
+    type: "War frontier",
+    threshold: gate("twok", 6),
+    map: {
+      path: "M700 190 L875 172 L920 250 L875 345 L735 325 L760 205 Z",
+      labelX: 810,
+      labelY: 255,
+      tone: "violet"
+    },
+    summary: "A maze of plateaus and chasms where the early warcamps and plateau assaults define much of the first book's conflict.",
+    culture: "The warcamps are less a nation than a pressure cooker: soldiers, bridgemen, officers, merchants, scholars, and camp followers build temporary societies around permanent war.",
+    costumes: "Military uniforms, bridge crew work clothes, armor, and brightlord finery sit side by side. Practical stormproofing matters as much as rank display.",
+    religion: "Vorin practice travels with the armies, but camp life often bends ideals around survival, ambition, and chain of command.",
+    physical: "The region brings together many peoples, including Alethi soldiers and the listeners of the Plains.",
+    characters: [
+      { name: "Bridge Four", threshold: gate("twok", 6), note: "A bridge crew whose identity grows out of the warcamp system." },
+      { name: "Adolin Kholin", threshold: gate("twok", 12), note: "A duelist and officer visible inside the highprince world." }
+    ]
+  },
+  {
+    id: "jah-keved",
+    name: "Jah Keved",
+    type: "Vorin kingdom",
+    threshold: gate("twok", 3),
+    map: {
+      path: "M330 160 L505 120 L530 145 L505 275 L380 305 L300 250 Z",
+      labelX: 410,
+      labelY: 225,
+      tone: "amber"
+    },
+    summary: "A western Vorin kingdom associated early with Shallan's family background, scholarship, and aristocratic pressure.",
+    culture: "Veden culture shares many Vorin assumptions with Alethkar while maintaining its own courtly styles, family politics, and scholarly ambitions.",
+    costumes: "Vorin safehand customs apply. Bright colors, formal women's dresses, and courtly presentation matter strongly among the lighteyed classes.",
+    religion: "Vorinism is central, with ardents, gendered arts, and public piety shaping expectations.",
+    physical: "Vedens are commonly associated with pale skin and black hair; red hair can suggest Unkalaki ancestry.",
+    characters: [
+      { name: "Shallan Davar", threshold: gate("twok", 3), note: "A Veden minor lighteyes whose scholarship pulls her into larger questions." }
+    ]
+  },
+  {
+    id: "shinovar",
+    name: "Shinovar",
+    type: "Western nation",
+    threshold: gate("twok", 0),
+    map: {
+      path: "M90 210 L235 155 L330 160 L300 250 L180 330 L70 295 Z",
+      labelX: 195,
+      labelY: 240,
+      tone: "leaf"
+    },
+    summary: "A far western land sheltered from the worst highstorms, with soil, grass, and customs that feel strange to much of Roshar.",
+    culture: "Shinovar stands apart from eastern highstorm culture. Stone, soil, weapons, and social roles carry meanings that outsiders often misunderstand.",
+    costumes: "Clothing is usually presented as simpler and softer than the storm-hardened gear of eastern nations.",
+    religion: "Shin beliefs and taboos differ sharply from Vorin assumptions, especially around stone, warriors, and truth.",
+    physical: "Shin people are often described by eastern Rosharans as having rounder eyes and a softer appearance.",
+    characters: [
+      { name: "Szeth", threshold: gate("twok", 0), note: "A Shin man introduced in the opening material." }
+    ]
+  },
+  {
+    id: "thaylenah",
+    name: "Thaylenah",
+    type: "Island nation",
+    threshold: gate("twok", 18),
+    map: {
+      path: "M415 365 L565 355 L625 425 L550 505 L410 475 L365 410 Z",
+      labelX: 500,
+      labelY: 425,
+      tone: "storm"
+    },
+    summary: "A mercantile island power known for trade, ships, negotiation, and distinctive appearance.",
+    culture: "Thaylens are famous as merchants and sailors. Trade, contracts, ports, and reputation shape how outsiders understand the nation.",
+    costumes: "Maritime practicality mixes with mercantile display. Eyebrow styling is a major visible cultural marker.",
+    religion: "Religious life varies, but commerce and civic identity are often more visible than Vorin courtly codes.",
+    physical: "Thaylens are known for long eyebrows that may droop or be styled back around the ears.",
+    characters: [
+      { name: "Rysn", threshold: gate("twok", 18), note: "A young Thaylen trader seen through travel and apprenticeship." }
+    ]
+  },
+  {
+    id: "azir",
+    name: "Azir and Makabak",
+    type: "Makabaki region",
+    threshold: gate("twok", 42),
+    map: {
+      path: "M260 330 L410 305 L520 365 L365 410 L245 445 L185 385 Z",
+      labelX: 340,
+      labelY: 370,
+      tone: "amber"
+    },
+    summary: "A broad western and central cultural region where Azir stands out for bureaucracy, law, and political ceremony.",
+    culture: "Makabaki cultures are diverse. Azir in particular is associated with paperwork, offices, procedure, and a legalistic political style.",
+    costumes: "Attire varies by country and station, with court dress and official presentation carrying bureaucratic weight.",
+    religion: "Local traditions differ from Vorin kingdoms; government, law, and civic order often define public identity.",
+    physical: "Makabaki peoples are often described with darker skin and dark hair.",
+    characters: [
+      { name: "Ym", threshold: gate("wor", 2), note: "A later viewpoint connected to everyday life away from the Alethi war." }
+    ]
+  },
+  {
+    id: "kharbranth",
+    name: "Kharbranth",
+    type: "City-state",
+    threshold: gate("twok", 3),
+    map: {
+      path: "M585 430 L675 400 L730 448 L705 520 L605 535 L550 505 Z",
+      labelX: 640,
+      labelY: 470,
+      tone: "violet"
+    },
+    summary: "A coastal city-state known early for scholarship, healing, bells, and carefully managed neutrality.",
+    culture: "Kharbranth's identity rests on hospitals, libraries, learning, and diplomacy. Scholars and healers make the city feel different from the warcamps.",
+    costumes: "Scholarly and medical dress sits beside coastal city clothing; practicality and institutional roles matter.",
+    religion: "Vorin influence is present, but the city's hospitals and libraries create a public culture centered on service and study.",
+    physical: "The city hosts people from many nations, so no single physical profile defines it.",
+    characters: [
+      { name: "Taravangian", threshold: gate("twok", 3), note: "The king associated with the city and its institutions." },
+      { name: "Jasnah Kholin", threshold: gate("twok", 3), note: "Her early research passes through Kharbranth." }
+    ]
+  },
+  {
+    id: "purelake",
+    name: "Purelake",
+    type: "Inland lake region",
+    threshold: gate("twok", 13),
+    map: {
+      path: "M315 520 L480 500 L550 555 L465 625 L300 610 L240 555 Z",
+      labelX: 395,
+      labelY: 560,
+      tone: "leaf"
+    },
+    summary: "A warm inland lake culture that offers a quieter view of Roshar away from armies and courts.",
+    culture: "Purelaker life is shaped by fishing, shallow waters, local food, hospitality, and rhythms that feel intentionally modest beside imperial politics.",
+    costumes: "Light, water-friendly clothing fits the warm shallow lake environment.",
+    religion: "Local worship has its own flavor and is not simply Vorin court practice moved onto the water.",
+    physical: "The region is culturally defined more by place and lifestyle than one uniform appearance.",
+    characters: [
+      { name: "Ishikk", threshold: gate("twok", 13), note: "A fisherman viewpoint tied to the region's everyday life." }
+    ]
+  },
+  {
+    id: "urithiru",
+    name: "Urithiru",
+    type: "Ancient city",
+    threshold: gate("wor", 89),
+    map: {
+      path: "M690 360 L795 345 L870 405 L840 510 L705 520 L730 448 Z",
+      labelX: 775,
+      labelY: 435,
+      tone: "violet"
+    },
+    summary: "A legendary location whose importance belongs to later-book exploration and should stay hidden until the right point.",
+    culture: "Once unlocked, this panel becomes a hub for old systems, coalition politics, research, logistics, and competing visions for Roshar's future.",
+    costumes: "Expect a mix of national clothing, military uniforms, scholarly attire, and practical expedition gear.",
+    religion: "Its significance intersects with ancient orders, modern faiths, and arguments about authority.",
+    physical: "No single people define the location; it becomes a meeting point for multiple nations.",
+    characters: [
+      { name: "Dalinar Kholin", threshold: gate("wor", 89), note: "A central figure in the city's later political role." },
+      { name: "Navani Kholin", threshold: gate("row", 1), note: "A scholar and leader tied to later tower research." }
+    ]
+  }
+];
+
 const state = {
   position: readSavedPosition(),
   category: "world",
   showLocked: true,
   search: "",
   selectedId: "roshar",
+  selectedRegionId: "alethkar",
+  regionDrawerOpen: false,
   timelineIndex: 0,
   revealed: new Set()
 };
@@ -461,6 +651,16 @@ const els = {
   timelineRange: document.querySelector("#timelineRange"),
   timelineMarkers: document.querySelector("#timelineMarkers"),
   timelineCard: document.querySelector("#timelineCard"),
+  mapCanvas: document.querySelector("#mapCanvas"),
+  mapLegend: document.querySelector("#mapLegend"),
+  regionDrawer: document.querySelector("#regionDrawer"),
+  drawerBackdrop: document.querySelector("#drawerBackdrop"),
+  closeRegionDrawer: document.querySelector("#closeRegionDrawer"),
+  regionType: document.querySelector("#regionType"),
+  regionGate: document.querySelector("#regionGate"),
+  regionTitle: document.querySelector("#regionTitle"),
+  regionSummary: document.querySelector("#regionSummary"),
+  regionContent: document.querySelector("#regionContent"),
   prevEvent: document.querySelector("#prevEvent"),
   nextEvent: document.querySelector("#nextEvent"),
   timelineScrubber: document.querySelector("#timelineScrubber"),
@@ -702,16 +902,141 @@ function renderTimeline() {
   renderTimelineCard();
 }
 
+function regionById(id) {
+  return worldRegions.find((region) => region.id === id) || worldRegions[0];
+}
+
+function renderMap() {
+  const regionsMarkup = worldRegions
+    .map((region) => {
+      const unlocked = isUnlocked(region);
+      const selected = region.id === state.selectedRegionId;
+      const classes = [
+        "map-region",
+        `tone-${region.map.tone}`,
+        unlocked ? "" : "is-locked",
+        selected ? "is-selected" : ""
+      ].filter(Boolean).join(" ");
+      const label = unlocked ? region.name : "Locked";
+
+      return `
+        <g class="${classes}" data-region-id="${region.id}" role="button" tabindex="0" aria-label="${label}">
+          <path d="${region.map.path}"></path>
+          <text x="${region.map.labelX}" y="${region.map.labelY}">${label}</text>
+        </g>
+      `;
+    })
+    .join("");
+
+  els.mapCanvas.innerHTML = `
+    <svg class="roshar-map" viewBox="0 0 980 680" role="img" aria-label="Schematic map of Roshar regions">
+      <defs>
+        <filter id="mapGlow" x="-20%" y="-20%" width="140%" height="140%">
+          <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#000000" flood-opacity="0.35"></feDropShadow>
+        </filter>
+      </defs>
+      <rect class="map-ocean" x="0" y="0" width="980" height="680" rx="18"></rect>
+      <path class="map-continent" d="M70 295 L90 210 L235 155 L330 160 L505 120 L690 120 L875 172 L935 275 L870 405 L840 510 L705 520 L605 535 L465 625 L300 610 L240 555 L185 385 Z"></path>
+      <path class="map-stormline" d="M865 82 C910 145 930 215 920 305 C910 398 865 475 795 575"></path>
+      ${regionsMarkup}
+    </svg>
+  `;
+
+  els.mapLegend.innerHTML = `
+    <span><i class="legend-swatch tone-storm"></i>Kingdoms and cities</span>
+    <span><i class="legend-swatch tone-amber"></i>Cultural regions</span>
+    <span><i class="legend-swatch tone-leaf"></i>Distinct ecologies</span>
+    <span><i class="legend-swatch tone-locked"></i>Locked by progress</span>
+  `;
+}
+
+function renderRegionSection(title, body) {
+  return `
+    <section class="region-info-block">
+      <h3>${title}</h3>
+      <p>${body}</p>
+    </section>
+  `;
+}
+
+function renderRegionCharacters(region) {
+  const rows = region.characters.map((character) => {
+    const unlocked = positionScore(character.threshold) <= positionScore(state.position) || state.revealed.has(region.id);
+    const name = unlocked ? character.name : "Locked person of note";
+    const note = unlocked ? character.note : `Visible at ${thresholdLabel(character.threshold)}.`;
+    return `
+      <li>
+        <strong>${name}</strong>
+        <span>${note}</span>
+      </li>
+    `;
+  }).join("");
+
+  return `
+    <section class="region-info-block">
+      <h3>Characters of note</h3>
+      <ul class="region-character-list">${rows}</ul>
+    </section>
+  `;
+}
+
+function renderRegionDrawer() {
+  const region = regionById(state.selectedRegionId);
+  const unlocked = isUnlocked(region);
+
+  els.regionDrawer.classList.toggle("is-open", state.regionDrawerOpen);
+  els.drawerBackdrop.classList.toggle("is-open", state.regionDrawerOpen);
+  els.regionDrawer.setAttribute("aria-hidden", String(!state.regionDrawerOpen));
+  els.regionType.textContent = unlocked ? region.type : "Locked";
+  els.regionGate.textContent = thresholdLabel(region.threshold);
+  els.regionTitle.textContent = unlocked ? region.name : "Locked region";
+  els.regionSummary.textContent = unlocked
+    ? region.summary
+    : `This area stays hidden until your progress reaches ${thresholdSentence(region.threshold)}.`;
+
+  if (!unlocked) {
+    els.regionContent.innerHTML = `
+      <div class="locked-region-callout">
+        <p>Names, cultures, characters, and location details are redacted for this region.</p>
+        <button class="button-primary" type="button" data-reveal-id="${region.id}">Reveal just this</button>
+      </div>
+    `;
+    return;
+  }
+
+  els.regionContent.innerHTML = [
+    renderRegionSection("Culture", region.culture),
+    renderRegionSection("Costumes and attire", region.costumes),
+    renderRegionSection("Religion and beliefs", region.religion),
+    renderRegionSection("Typical physical characteristics", region.physical),
+    renderRegionCharacters(region)
+  ].join("");
+}
+
+function openRegionDrawer(id) {
+  state.selectedRegionId = id;
+  state.regionDrawerOpen = true;
+  renderMap();
+  renderRegionDrawer();
+}
+
+function closeRegionDrawer() {
+  state.regionDrawerOpen = false;
+  renderRegionDrawer();
+}
+
 function render() {
   renderReaderState();
   renderSegments();
   renderCards();
   renderDetail();
   renderTimeline();
+  renderMap();
+  renderRegionDrawer();
 }
 
 function openRevealDialog(id) {
-  const item = [...entries, ...timelineEvents].find((candidate) => candidate.id === id);
+  const item = [...entries, ...timelineEvents, ...worldRegions].find((candidate) => candidate.id === id);
   if (!item) {
     return;
   }
@@ -740,9 +1065,14 @@ function confirmReveal() {
 
   state.revealed.add(pendingRevealId);
   const revealedEntry = entries.find((item) => item.id === pendingRevealId);
+  const revealedRegion = worldRegions.find((item) => item.id === pendingRevealId);
   if (revealedEntry) {
     state.category = revealedEntry.category;
     state.selectedId = revealedEntry.id;
+  }
+  if (revealedRegion) {
+    state.selectedRegionId = revealedRegion.id;
+    state.regionDrawerOpen = true;
   }
   closeRevealDialog();
   render();
@@ -819,6 +1149,22 @@ els.timelineRange.addEventListener("input", (event) => {
 els.prevEvent.addEventListener("click", () => shiftTimeline(-1));
 els.nextEvent.addEventListener("click", () => shiftTimeline(1));
 
+els.mapCanvas.addEventListener("click", (event) => {
+  const region = event.target.closest("[data-region-id]");
+  if (region) {
+    openRegionDrawer(region.dataset.regionId);
+  }
+});
+
+els.mapCanvas.addEventListener("keydown", (event) => {
+  const region = event.target.closest("[data-region-id]");
+  if (!region || !["Enter", " "].includes(event.key)) {
+    return;
+  }
+  event.preventDefault();
+  openRegionDrawer(region.dataset.regionId);
+});
+
 els.timelineScrubber.addEventListener("wheel", (event) => {
   if (Math.abs(event.deltaY) < 4) {
     return;
@@ -829,9 +1175,17 @@ els.timelineScrubber.addEventListener("wheel", (event) => {
 
 els.cancelReveal.addEventListener("click", closeRevealDialog);
 els.confirmReveal.addEventListener("click", confirmReveal);
+els.closeRegionDrawer.addEventListener("click", closeRegionDrawer);
+els.drawerBackdrop.addEventListener("click", closeRegionDrawer);
 
 els.revealDialog.addEventListener("cancel", () => {
   pendingRevealId = null;
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && state.regionDrawerOpen) {
+    closeRegionDrawer();
+  }
 });
 
 render();
