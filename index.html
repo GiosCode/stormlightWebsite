@@ -20,19 +20,16 @@
 
         <div class="topbar-actions">
           <span class="shield-pill" id="shieldStatus">Spoiler Shield Active</span>
-          <label class="progress-select">
-            <span>Read through</span>
-            <select id="progressSelect" aria-label="Read through book">
-              <option value="0">No books yet</option>
-              <option value="1">The Way of Kings</option>
-              <option value="2">Words of Radiance</option>
-              <option value="2.5">Edgedancer</option>
-              <option value="3">Oathbringer</option>
-              <option value="3.5">Dawnshard</option>
-              <option value="4">Rhythm of War</option>
-              <option value="5">Wind and Truth</option>
-            </select>
-          </label>
+          <div class="progress-control" aria-label="Read through position">
+            <label class="progress-select">
+              <span>Work</span>
+              <select id="workSelect" aria-label="Read through work"></select>
+            </label>
+            <label class="progress-select">
+              <span>Chapter</span>
+              <select id="chapterSelect" aria-label="Read through chapter"></select>
+            </label>
+          </div>
         </div>
       </header>
 

@@ -117,6 +117,13 @@ button {
   gap: 12px;
 }
 
+.progress-control {
+  display: grid;
+  grid-template-columns: minmax(190px, 250px) minmax(150px, 190px);
+  gap: 10px;
+  align-items: end;
+}
+
 .shield-pill {
   min-height: 36px;
   display: inline-flex;
@@ -151,7 +158,8 @@ button {
 }
 
 .progress-select select {
-  max-width: 220px;
+  width: 100%;
+  max-width: none;
   padding: 0 34px 0 12px;
 }
 
@@ -357,6 +365,11 @@ h1 {
 
 .book-meter {
   display: grid;
+  gap: 10px;
+}
+
+.work-steps {
+  display: grid;
   grid-template-columns: repeat(7, minmax(18px, 1fr));
   gap: 8px;
 }
@@ -369,6 +382,39 @@ h1 {
 
 .book-step.is-read {
   background: linear-gradient(90deg, var(--storm), var(--leaf), var(--amber));
+}
+
+.book-step.is-current {
+  background: linear-gradient(90deg, var(--storm), rgba(255, 255, 255, 0.16));
+}
+
+.chapter-progress {
+  display: grid;
+  gap: 6px;
+}
+
+.chapter-progress-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.chapter-progress-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.chapter-progress-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--storm), var(--amber));
 }
 
 .policy-list {
@@ -685,6 +731,10 @@ h1 {
     max-width: calc(100% - 32px);
     margin-right: 0;
     display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .progress-control {
     grid-template-columns: 1fr;
   }
 
