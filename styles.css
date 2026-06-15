@@ -232,6 +232,7 @@ h1 {
 .detail-panel,
 .timeline-panel,
 .map-section,
+.relationship-section,
 .reveal-dialog {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -353,6 +354,7 @@ h1 {
 .detail-panel h2,
 .timeline-panel h2,
 .map-section h2,
+.relationship-section h2,
 .region-drawer h2,
 .more-drawer h2 {
   margin-bottom: 10px;
@@ -667,20 +669,236 @@ h1 {
   padding: 20px;
 }
 
-.map-header {
+.map-header,
+.relationship-header {
   display: flex;
   justify-content: space-between;
   gap: 16px;
   align-items: end;
 }
 
-.map-note {
+.map-note,
+.relationship-note {
   max-width: 280px;
   margin: 0;
   color: var(--ink-muted);
   font-size: 0.92rem;
   line-height: 1.5;
   text-align: right;
+}
+
+.relationship-section {
+  display: grid;
+  gap: 18px;
+  padding: 20px;
+}
+
+.relationship-stage {
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(79, 183, 197, 0.08), rgba(240, 166, 72, 0.06)),
+    rgba(255, 255, 255, 0.055);
+}
+
+.relationship-canvas {
+  position: relative;
+  min-width: 920px;
+  height: 560px;
+}
+
+.relationship-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.relationship-line {
+  stroke: var(--storm);
+  stroke-width: 0.65;
+  vector-effect: non-scaling-stroke;
+}
+
+.relationship-line.type-family {
+  stroke: var(--amber);
+}
+
+.relationship-line.type-mentor,
+.relationship-line.type-court {
+  stroke: var(--violet);
+}
+
+.relationship-line.type-crew {
+  stroke: var(--leaf);
+}
+
+.relationship-line.type-conflict {
+  stroke: var(--danger);
+}
+
+.relationship-line.is-locked {
+  stroke: rgba(185, 201, 196, 0.48);
+  stroke-dasharray: 6 7;
+}
+
+.relationship-node {
+  position: absolute;
+  width: 136px;
+  min-height: 168px;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--ink);
+  background: rgba(10, 18, 22, 0.9);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.26);
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+.relationship-node h3 {
+  margin: 0;
+  color: var(--ink-strong);
+  font-size: 0.95rem;
+  line-height: 1.18;
+}
+
+.relationship-node p {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  line-height: 1.25;
+}
+
+.relationship-node span {
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.portrait-frame {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--line-strong);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.origin-storm .portrait-frame {
+  border-color: var(--storm);
+}
+
+.origin-amber .portrait-frame {
+  border-color: var(--amber);
+}
+
+.origin-leaf .portrait-frame {
+  border-color: var(--leaf);
+}
+
+.origin-violet .portrait-frame {
+  border-color: var(--violet);
+}
+
+.relationship-node.is-locked {
+  border-color: rgba(185, 201, 196, 0.26);
+  color: var(--ink-muted);
+  background:
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 8px, rgba(255, 255, 255, 0.015) 8px 16px),
+    rgba(18, 23, 24, 0.92);
+}
+
+.relationship-node.is-locked .portrait-frame {
+  border-color: rgba(185, 201, 196, 0.44);
+  filter: grayscale(1);
+}
+
+.portrait-svg {
+  width: 68px;
+  height: 68px;
+}
+
+.portrait-bg {
+  fill: color-mix(in srgb, var(--accent), #0b1214 64%);
+}
+
+.portrait-body {
+  fill: var(--coat);
+}
+
+.portrait-face {
+  fill: var(--skin);
+}
+
+.portrait-hair {
+  fill: var(--hair);
+}
+
+.portrait-accent {
+  fill: none;
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-width: 4;
+}
+
+.portrait-placeholder rect {
+  fill: rgba(185, 201, 196, 0.12);
+}
+
+.portrait-placeholder circle,
+.portrait-placeholder path {
+  fill: rgba(185, 201, 196, 0.34);
+}
+
+.relationship-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.relationship-legend span {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 7px 10px;
+  color: var(--ink-muted);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.legend-line {
+  width: 32px;
+  border-top: 3px solid var(--storm);
+}
+
+.legend-line.type-family {
+  border-color: var(--amber);
+}
+
+.legend-line.type-mentor {
+  border-color: var(--violet);
+}
+
+.legend-line.type-crew {
+  border-color: var(--leaf);
+}
+
+.legend-line.is-locked {
+  border-color: rgba(185, 201, 196, 0.48);
+  border-top-style: dotted;
 }
 
 .map-shell {
@@ -1062,7 +1280,8 @@ h1 {
   .reader-panel,
   .detail-panel,
   .timeline-panel,
-  .map-section {
+  .map-section,
+  .relationship-section {
     width: calc(100% - 32px);
     max-width: calc(100% - 32px);
     margin-right: 0;
@@ -1092,12 +1311,14 @@ h1 {
 
   .timeline-header,
   .map-header,
+  .relationship-header,
   .dialog-actions {
     align-items: stretch;
     flex-direction: column;
   }
 
-  .map-note {
+  .map-note,
+  .relationship-note {
     max-width: none;
     text-align: left;
   }
@@ -1108,6 +1329,16 @@ h1 {
 
   .map-region text {
     font-size: 24px;
+  }
+
+  .relationship-canvas {
+    min-width: 820px;
+    height: 520px;
+  }
+
+  .relationship-node {
+    width: 124px;
+    min-height: 158px;
   }
 
   .region-drawer,

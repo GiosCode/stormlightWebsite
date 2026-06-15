@@ -757,6 +757,142 @@ const worldRegions = [
   }
 ];
 
+const relationshipCharacters = [
+  {
+    id: "kaladin",
+    name: "Kaladin",
+    role: "Soldier",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 1),
+    x: 15,
+    y: 42,
+    portrait: { skin: "#9f6b4d", hair: "#171717", coat: "#263f45", accent: "#4fb7c5" }
+  },
+  {
+    id: "tien",
+    name: "Tien",
+    role: "Family",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 7),
+    x: 13,
+    y: 18,
+    portrait: { skin: "#a87355", hair: "#1f1a18", coat: "#35535a", accent: "#88a86b" }
+  },
+  {
+    id: "teft",
+    name: "Teft",
+    role: "Bridge Four",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 14),
+    x: 30,
+    y: 54,
+    portrait: { skin: "#9a684d", hair: "#2e2925", coat: "#33434a", accent: "#4fb7c5" }
+  },
+  {
+    id: "shallan",
+    name: "Shallan",
+    role: "Scholar",
+    origin: "Jah Keved",
+    tone: "amber",
+    threshold: gate("twok", 3),
+    x: 36,
+    y: 18,
+    portrait: { skin: "#d9b29a", hair: "#9c3d2f", coat: "#604354", accent: "#f0a648" }
+  },
+  {
+    id: "jasnah",
+    name: "Jasnah",
+    role: "Scholar",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 3),
+    x: 54,
+    y: 18,
+    portrait: { skin: "#9f6b4d", hair: "#121212", coat: "#222b38", accent: "#ad82ff" }
+  },
+  {
+    id: "dalinar",
+    name: "Dalinar",
+    role: "Highprince",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 12),
+    x: 58,
+    y: 48,
+    portrait: { skin: "#966249", hair: "#1f1f1f", coat: "#253746", accent: "#f0a648" }
+  },
+  {
+    id: "adolin",
+    name: "Adolin",
+    role: "Duelist",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 12),
+    x: 76,
+    y: 35,
+    portrait: { skin: "#a96f4f", hair: "#c8a14c", coat: "#2d4059", accent: "#4fb7c5" }
+  },
+  {
+    id: "renarin",
+    name: "Renarin",
+    role: "Kholin",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 18),
+    x: 78,
+    y: 62,
+    portrait: { skin: "#a06a4e", hair: "#45362c", coat: "#263240", accent: "#88a86b" }
+  },
+  {
+    id: "szeth",
+    name: "Szeth",
+    role: "Shin",
+    origin: "Shinovar",
+    tone: "leaf",
+    threshold: gate("twok", 0),
+    x: 86,
+    y: 14,
+    portrait: { skin: "#d7c4ae", hair: "#f0f0e9", coat: "#5b6659", accent: "#88a86b" }
+  },
+  {
+    id: "lift",
+    name: "Lift",
+    role: "Edgedancer",
+    origin: "Makabak",
+    tone: "amber",
+    threshold: gate("edgedancer", 1),
+    x: 34,
+    y: 78,
+    portrait: { skin: "#8f5b3e", hair: "#2b201b", coat: "#4d5130", accent: "#f0a648" }
+  },
+  {
+    id: "venli",
+    name: "Venli",
+    role: "Listener",
+    origin: "Shattered Plains",
+    tone: "violet",
+    threshold: gate("ob", 1),
+    x: 58,
+    y: 82,
+    portrait: { skin: "#8b6a75", hair: "#3b2a31", coat: "#4c384f", accent: "#ad82ff" }
+  }
+];
+
+const relationshipLinks = [
+  { id: "kaladin-tien", from: "kaladin", to: "tien", type: "family", label: "brothers", threshold: gate("twok", 7) },
+  { id: "kaladin-teft", from: "kaladin", to: "teft", type: "crew", label: "Bridge Four", threshold: gate("twok", 14) },
+  { id: "shallan-jasnah", from: "shallan", to: "jasnah", type: "mentor", label: "scholarship", threshold: gate("twok", 3) },
+  { id: "jasnah-dalinar", from: "jasnah", to: "dalinar", type: "family", label: "Kholin family", threshold: gate("twok", 12) },
+  { id: "dalinar-adolin", from: "dalinar", to: "adolin", type: "family", label: "father and son", threshold: gate("twok", 12) },
+  { id: "dalinar-renarin", from: "dalinar", to: "renarin", type: "family", label: "father and son", threshold: gate("twok", 18) },
+  { id: "adolin-shallan", from: "adolin", to: "shallan", type: "court", label: "court connection", threshold: gate("wor", 12) },
+  { id: "szeth-dalinar", from: "szeth", to: "dalinar", type: "conflict", label: "spoiler conflict", threshold: gate("twok", 75) },
+  { id: "lift-venli", from: "lift", to: "venli", type: "spoiler", label: "later arc proximity", threshold: gate("row", 1) }
+];
+
 const state = {
   position: readSavedPosition(),
   category: "world",
@@ -793,6 +929,8 @@ const els = {
   timelineCard: document.querySelector("#timelineCard"),
   mapCanvas: document.querySelector("#mapCanvas"),
   mapLegend: document.querySelector("#mapLegend"),
+  relationshipTree: document.querySelector("#relationshipTree"),
+  relationshipLegend: document.querySelector("#relationshipLegend"),
   regionDrawer: document.querySelector("#regionDrawer"),
   drawerBackdrop: document.querySelector("#drawerBackdrop"),
   closeRegionDrawer: document.querySelector("#closeRegionDrawer"),
@@ -1099,6 +1237,98 @@ function renderMap() {
   `;
 }
 
+function relationshipCharacterById(id) {
+  return relationshipCharacters.find((character) => character.id === id);
+}
+
+function isRelationshipVisible(link) {
+  const from = relationshipCharacterById(link.from);
+  const to = relationshipCharacterById(link.to);
+  return Boolean(from && to && isUnlocked(from) && isUnlocked(to) && isUnlocked(link));
+}
+
+function renderPortrait(character, unlocked) {
+  if (!unlocked) {
+    return `
+      <svg class="portrait-svg portrait-placeholder" viewBox="0 0 80 80" aria-hidden="true">
+        <rect x="4" y="4" width="72" height="72" rx="18"></rect>
+        <circle cx="40" cy="31" r="13"></circle>
+        <path d="M20 70 C24 53 56 53 60 70 Z"></path>
+      </svg>
+    `;
+  }
+
+  return `
+    <svg class="portrait-svg" viewBox="0 0 80 80" aria-hidden="true"
+      style="--skin: ${character.portrait.skin}; --hair: ${character.portrait.hair}; --coat: ${character.portrait.coat}; --accent: ${character.portrait.accent};">
+      <rect class="portrait-bg" x="4" y="4" width="72" height="72" rx="18"></rect>
+      <path class="portrait-body" d="M16 74 C20 54 60 54 64 74 Z"></path>
+      <circle class="portrait-face" cx="40" cy="32" r="15"></circle>
+      <path class="portrait-hair" d="M24 31 C26 14 54 12 58 30 C51 25 44 24 34 25 C31 26 28 28 24 31 Z"></path>
+      <path class="portrait-accent" d="M23 61 C32 67 49 67 58 61"></path>
+    </svg>
+  `;
+}
+
+function renderRelationshipTree() {
+  const links = relationshipLinks.map((link) => {
+    const from = relationshipCharacterById(link.from);
+    const to = relationshipCharacterById(link.to);
+    if (!from || !to) {
+      return "";
+    }
+
+    const visible = isRelationshipVisible(link);
+    const classes = [
+      "relationship-line",
+      visible ? `type-${link.type}` : "is-locked"
+    ].join(" ");
+    const label = visible ? link.label : "Protected relationship";
+
+    return `
+      <line class="${classes}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}">
+        <title>${label}</title>
+      </line>
+    `;
+  }).join("");
+
+  const nodes = relationshipCharacters.map((character) => {
+    const unlocked = isUnlocked(character);
+    const classes = [
+      "relationship-node",
+      unlocked ? `origin-${character.tone}` : "is-locked"
+    ].join(" ");
+    const name = unlocked ? character.name : "Locked character";
+    const role = unlocked ? character.role : thresholdLabel(character.threshold);
+    const origin = unlocked ? character.origin : "Protected";
+
+    return `
+      <article class="${classes}" style="left: ${character.x}%; top: ${character.y}%;">
+        <div class="portrait-frame">${renderPortrait(character, unlocked)}</div>
+        <h3>${name}</h3>
+        <p>${role}</p>
+        <span>${origin}</span>
+      </article>
+    `;
+  }).join("");
+
+  els.relationshipTree.innerHTML = `
+    <div class="relationship-canvas">
+      <svg class="relationship-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        ${links}
+      </svg>
+      ${nodes}
+    </div>
+  `;
+
+  els.relationshipLegend.innerHTML = `
+    <span><i class="legend-line type-family"></i>Family</span>
+    <span><i class="legend-line type-mentor"></i>Mentor or study</span>
+    <span><i class="legend-line type-crew"></i>Crew or alliance</span>
+    <span><i class="legend-line is-locked"></i>Protected</span>
+  `;
+}
+
 function renderRegionSection(title, body) {
   return `
     <section class="region-info-block">
@@ -1245,6 +1475,7 @@ function render() {
   renderDetail();
   renderTimeline();
   renderMap();
+  renderRelationshipTree();
   renderRegionDrawer();
   renderMoreDrawer();
 }
