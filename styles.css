@@ -172,10 +172,10 @@ button {
 
 .hero-stage {
   min-width: 0;
-  min-height: clamp(620px, calc(100vh - var(--topbar-height) - 48px), 980px);
+  min-height: clamp(430px, 54vh, 620px);
   display: grid;
   align-items: end;
-  padding: min(13vh, 92px) 0 22px;
+  padding: clamp(42px, 6vh, 72px) 0 22px;
 }
 
 .hero-overlay {
@@ -1054,8 +1054,8 @@ h1 {
   }
 
   .hero-stage {
-    min-height: clamp(560px, calc(100vh - var(--topbar-height) - 30px), 760px);
-    padding-top: 48px;
+    min-height: clamp(430px, 58vh, 560px);
+    padding-top: 36px;
   }
 
   .control-panel,
