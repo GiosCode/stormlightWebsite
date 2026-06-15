@@ -340,6 +340,144 @@ const entries = [
   }
 ];
 
+const moreDetails = {
+  roshar: {
+    sourceUrl: "https://coppermind.net/wiki/Roshar",
+    summary: "Roshar is both the name of the planet and the main continent where the early Stormlight story is set.",
+    sections: [
+      { title: "World shape", body: "The continent is marked by highstorms, crem buildup, stone ecology, and cities built for survival rather than softness." },
+      { title: "People and nations", body: "Roshar contains many nations with distinct languages, dress, religious practice, class systems, and attitudes toward war and scholarship." },
+      { title: "Why it matters", body: "The setting is not just a backdrop. Weather, spren, gemstones, social rank, and old history all shape what characters can do." }
+    ]
+  },
+  highstorms: {
+    sourceUrl: "https://coppermind.net/wiki/Highstorm",
+    summary: "Highstorms are continent-spanning storms that define life, architecture, travel, warfare, and ecology on Roshar.",
+    sections: [
+      { title: "Daily life", body: "People plan work, trade, shelter, and travel around storm timing. Buildings, plants, and animals are adapted to survive repeated impact." },
+      { title: "Stormlight", body: "Highstorms are closely tied to infused gemstones and the practical economy of light, money, and power." },
+      { title: "Story role", body: "Storms create both danger and rhythm: they isolate places, interrupt plans, and make Roshar feel alive and hostile." }
+    ]
+  },
+  spren: {
+    sourceUrl: "https://coppermind.net/wiki/Spren",
+    summary: "Spren are visible manifestations associated with emotions, natural forces, ideas, and living experience on Roshar.",
+    sections: [
+      { title: "Common spren", body: "People see spren around everyday events such as fear, pain, flame, rot, wind, rain, and anticipation." },
+      { title: "Culture", body: "Because spren appear in public, Rosharans treat many inner states and natural forces as visible parts of ordinary life." },
+      { title: "Spoiler note", body: "Some spren-related topics become much more important later, so this panel stays broad at early thresholds." }
+    ]
+  },
+  "shattered-plains": {
+    sourceUrl: "https://coppermind.net/wiki/Shattered_Plains",
+    summary: "The Shattered Plains are a broken plateau region central to the Alethi warcamps and early military campaigns.",
+    sections: [
+      { title: "Terrain", body: "Deep chasms divide the plateaus, making movement, bridge crews, scouting, and timing central to battle." },
+      { title: "Warcamps", body: "The Alethi highprinces maintain large camps there, creating a temporary society of soldiers, officers, workers, merchants, and enslaved crews." },
+      { title: "Reader hook", body: "The region begins as a battlefield, but the geography carries larger questions as the series expands." }
+    ]
+  },
+  urithiru: {
+    sourceUrl: "https://coppermind.net/wiki/Urithiru",
+    summary: "Urithiru is a legendary city whose importance becomes clear only after the story moves beyond the early warcamps.",
+    sections: [
+      { title: "Function", body: "Once unlocked, Urithiru becomes a hub for travel, politics, research, logistics, and competing plans for Roshar's future." },
+      { title: "Cultures", body: "Its later role brings many peoples and national customs into one place, making it a useful lens for comparing Rosharan cultures." },
+      { title: "Spoiler note", body: "Most specifics about Urithiru are gated because the location itself is a major expansion of the setting." }
+    ]
+  },
+  kaladin: {
+    sourceUrl: "https://coppermind.net/wiki/Kaladin",
+    summary: "Kaladin is introduced through war, medicine, class pressure, and the struggle to protect others under brutal systems.",
+    sections: [
+      { title: "Background", body: "He comes from a surgeon's household, which gives him a practical understanding of bodies, injury, responsibility, and failure." },
+      { title: "Early conflict", body: "His early story moves through soldiering and the bridge crews, where leadership becomes inseparable from survival." },
+      { title: "Themes", body: "Protection, depression, loyalty, trauma, and the cost of command are central to how his chapters work." }
+    ]
+  },
+  shallan: {
+    sourceUrl: "https://coppermind.net/wiki/Shallan_Davar",
+    summary: "Shallan Davar is a Veden lighteyes whose story mixes scholarship, art, family pressure, secrets, and dangerous curiosity.",
+    sections: [
+      { title: "Skills", body: "Her drawing, memory, research instincts, and social improvisation make her a very different viewpoint from the warcamp characters." },
+      { title: "Culture", body: "Shallan's chapters show Vorin gender expectations, safehand customs, scholarship, and lighteyed family politics." },
+      { title: "Themes", body: "Identity, truth, art, fear, and self-protection shape the way her story reveals information." }
+    ]
+  },
+  dalinar: {
+    sourceUrl: "https://coppermind.net/wiki/Dalinar_Kholin",
+    summary: "Dalinar Kholin is an Alethi highprince whose public power is tangled with honor, memory, command, and political distrust.",
+    sections: [
+      { title: "Public role", body: "He sits high in Alethi society, where military reputation, codes of conduct, and highprince rivalry define political life." },
+      { title: "Early tension", body: "His ideas about honor and unity do not always fit the aggressive culture around him." },
+      { title: "Themes", body: "Leadership, responsibility, violence, reform, and whether a person can change are core to his arc." }
+    ]
+  },
+  jasnah: {
+    sourceUrl: "https://coppermind.net/wiki/Jasnah_Kholin",
+    summary: "Jasnah Kholin is a scholar, royal figure, and public skeptic whose research challenges comfortable assumptions.",
+    sections: [
+      { title: "Scholarship", body: "Her work shows how history, religion, philosophy, and evidence can collide in Vorin society." },
+      { title: "Public image", body: "Jasnah's intelligence, atheism, and status make her both respected and controversial." },
+      { title: "Story role", body: "She often points the reader toward hidden history and questions that are larger than local politics." }
+    ]
+  },
+  venli: {
+    sourceUrl: "https://coppermind.net/wiki/Venli",
+    summary: "Venli is connected to the listener side of Roshar's conflicts and becomes important as the series widens perspective.",
+    sections: [
+      { title: "Culture", body: "Her viewpoint helps the reader see non-Alethi assumptions, listener identity, songs, forms, and memory." },
+      { title: "Conflict", body: "Her story carries regret, ambition, survival, and the consequences of choices made inside a threatened people." },
+      { title: "Spoiler note", body: "The details become increasingly sensitive, so this panel remains high-level until later thresholds." }
+    ]
+  },
+  lift: {
+    sourceUrl: "https://coppermind.net/wiki/Lift",
+    summary: "Lift brings a street-level, food-centered, impulsive perspective that feels very different from courts and warcamps.",
+    sections: [
+      { title: "Tone", body: "Her chapters often move quickly, balancing humor, hunger, danger, and sincere compassion." },
+      { title: "Viewpoint", body: "She shows how power and religion look from alleys, rooftops, kitchens, and ordinary city life." },
+      { title: "Placement", body: "Her entry is gated to the novella because that is where much of her context becomes safer to discuss." }
+    ]
+  },
+  spheres: {
+    sourceUrl: "https://coppermind.net/wiki/Sphere",
+    summary: "Spheres are gemstone currency used as money, light sources, and practical containers for Stormlight.",
+    sections: [
+      { title: "Currency", body: "Gem type and size affect value, making spheres both economic objects and everyday tools." },
+      { title: "Light", body: "Infused spheres glow, so money and lighting are linked in a way that makes Roshar feel materially different." },
+      { title: "Worldbuilding", body: "Spheres connect weather, trade, class, and magic-adjacent systems without needing an explanation every time they appear." }
+    ]
+  },
+  shardblade: {
+    sourceUrl: "https://coppermind.net/wiki/Shardblade",
+    summary: "Shardblades are rare, legendary weapons with enormous military and political value.",
+    sections: [
+      { title: "Battlefield role", body: "A Shardblade changes the scale of combat and can make one fighter matter like a battlefield asset." },
+      { title: "Status", body: "Owning one is a public sign of power, wealth, legitimacy, and danger." },
+      { title: "Spoiler note", body: "Later explanations about Shardblades are sensitive, so early panels describe only their public reputation." }
+    ]
+  },
+  shardplate: {
+    sourceUrl: "https://coppermind.net/wiki/Shardplate",
+    summary: "Shardplate is rare armor that grants dramatic battlefield advantage and social prestige.",
+    sections: [
+      { title: "Combat", body: "Plate increases strength, durability, and battlefield presence, making a bearer difficult for ordinary soldiers to face." },
+      { title: "Politics", body: "Like Shardblades, Plate is tied to noble status and military command." },
+      { title: "Limits", body: "Early-story knowledge focuses on what Plate visibly does, while deeper mechanics are kept gated." }
+    ]
+  },
+  oathgate: {
+    sourceUrl: "https://coppermind.net/wiki/Oathgate",
+    summary: "Oathgates are ancient transportation devices whose significance becomes safer to discuss after the relevant book two material.",
+    sections: [
+      { title: "Function", body: "They are tied to large-scale travel and old infrastructure rather than ordinary roads or ships." },
+      { title: "Story impact", body: "Once understood, they change what distance, borders, and logistics mean for the wider conflict." },
+      { title: "Spoiler note", body: "This entry stays gated because the discovery and use of Oathgates are part of the setting opening up." }
+    ]
+  }
+};
+
 const timelineEvents = [
   {
     id: "event-prelude",
@@ -627,6 +765,8 @@ const state = {
   selectedId: "roshar",
   selectedRegionId: "alethkar",
   regionDrawerOpen: false,
+  selectedMoreId: "roshar",
+  moreDrawerOpen: false,
   timelineIndex: 0,
   revealed: new Set()
 };
@@ -661,6 +801,14 @@ const els = {
   regionTitle: document.querySelector("#regionTitle"),
   regionSummary: document.querySelector("#regionSummary"),
   regionContent: document.querySelector("#regionContent"),
+  moreDrawer: document.querySelector("#moreDrawer"),
+  moreBackdrop: document.querySelector("#moreBackdrop"),
+  closeMoreDrawer: document.querySelector("#closeMoreDrawer"),
+  moreType: document.querySelector("#moreType"),
+  moreGate: document.querySelector("#moreGate"),
+  moreTitle: document.querySelector("#moreTitle"),
+  moreSummary: document.querySelector("#moreSummary"),
+  moreContent: document.querySelector("#moreContent"),
   prevEvent: document.querySelector("#prevEvent"),
   nextEvent: document.querySelector("#nextEvent"),
   timelineScrubber: document.querySelector("#timelineScrubber"),
@@ -849,9 +997,10 @@ function renderDetail() {
   els.detailTags.innerHTML = unlocked
     ? item.tags.map((tag) => `<span>${tag}</span>`).join("")
     : `<span>Protected</span>`;
-  els.detailActions.innerHTML = unlocked
-    ? ""
-    : `<button class="button-primary" type="button" data-reveal-id="${item.id}">Reveal just this</button>`;
+  els.detailActions.innerHTML = `
+    <button class="button-secondary" type="button" data-more-id="${item.id}">More</button>
+    ${unlocked ? "" : `<button class="button-primary" type="button" data-reveal-id="${item.id}">Reveal just this</button>`}
+  `;
 }
 
 function renderTimelineMarkers() {
@@ -1016,13 +1165,77 @@ function renderRegionDrawer() {
 function openRegionDrawer(id) {
   state.selectedRegionId = id;
   state.regionDrawerOpen = true;
+  state.moreDrawerOpen = false;
   renderMap();
   renderRegionDrawer();
+  renderMoreDrawer();
 }
 
 function closeRegionDrawer() {
   state.regionDrawerOpen = false;
   renderRegionDrawer();
+}
+
+function entryById(id) {
+  return entries.find((entry) => entry.id === id) || entries[0];
+}
+
+function renderMoreSection(title, body) {
+  return `
+    <section class="more-info-block">
+      <h3>${title}</h3>
+      <p>${body}</p>
+    </section>
+  `;
+}
+
+function renderMoreDrawer() {
+  const item = entryById(state.selectedMoreId);
+  const detail = moreDetails[item.id];
+  const unlocked = isUnlocked(item);
+
+  els.moreDrawer.classList.toggle("is-open", state.moreDrawerOpen);
+  els.moreBackdrop.classList.toggle("is-open", state.moreDrawerOpen);
+  els.moreDrawer.setAttribute("aria-hidden", String(!state.moreDrawerOpen));
+  els.moreType.textContent = unlocked ? categoryLabel(item.category) : "Locked";
+  els.moreGate.textContent = thresholdLabel(item.threshold);
+  els.moreTitle.textContent = unlocked ? item.title : "Locked detail";
+  els.moreSummary.textContent = unlocked
+    ? detail?.summary || item.summary || item.body
+    : `This detail stays hidden until your progress reaches ${thresholdSentence(item.threshold)}.`;
+
+  if (!unlocked) {
+    els.moreContent.innerHTML = `
+      <div class="locked-region-callout">
+        <p>Additional notes from the linked reference are redacted for this entry.</p>
+        <button class="button-primary" type="button" data-reveal-id="${item.id}">Reveal just this</button>
+      </div>
+    `;
+    return;
+  }
+
+  const sections = detail?.sections?.map((section) => renderMoreSection(section.title, section.body)).join("") || "";
+  const source = detail?.sourceUrl
+    ? `<a class="source-link" href="${detail.sourceUrl}" target="_blank" rel="noopener noreferrer">Coppermind topic page</a>`
+    : "";
+
+  els.moreContent.innerHTML = `
+    ${sections}
+    ${source ? `<section class="more-source">${source}</section>` : ""}
+  `;
+}
+
+function openMoreDrawer(id) {
+  state.selectedMoreId = id;
+  state.moreDrawerOpen = true;
+  state.regionDrawerOpen = false;
+  renderRegionDrawer();
+  renderMoreDrawer();
+}
+
+function closeMoreDrawer() {
+  state.moreDrawerOpen = false;
+  renderMoreDrawer();
 }
 
 function render() {
@@ -1033,6 +1246,7 @@ function render() {
   renderTimeline();
   renderMap();
   renderRegionDrawer();
+  renderMoreDrawer();
 }
 
 function openRevealDialog(id) {
@@ -1118,9 +1332,13 @@ els.segments.forEach((button) => {
   button.addEventListener("click", () => {
     state.category = button.dataset.category;
     state.selectedId = filteredEntries()[0]?.id || null;
+    if (state.moreDrawerOpen && state.selectedId) {
+      state.selectedMoreId = state.selectedId;
+    }
     renderSegments();
     renderCards();
     renderDetail();
+    renderMoreDrawer();
   });
 });
 
@@ -1130,11 +1348,21 @@ els.cardGrid.addEventListener("click", (event) => {
     return;
   }
   state.selectedId = card.dataset.entryId;
+  if (state.moreDrawerOpen) {
+    state.selectedMoreId = state.selectedId;
+  }
   renderCards();
   renderDetail();
+  renderMoreDrawer();
 });
 
 document.addEventListener("click", (event) => {
+  const moreButton = event.target.closest("[data-more-id]");
+  if (moreButton) {
+    openMoreDrawer(moreButton.dataset.moreId);
+    return;
+  }
+
   const revealButton = event.target.closest("[data-reveal-id]");
   if (revealButton) {
     openRevealDialog(revealButton.dataset.revealId);
@@ -1177,12 +1405,19 @@ els.cancelReveal.addEventListener("click", closeRevealDialog);
 els.confirmReveal.addEventListener("click", confirmReveal);
 els.closeRegionDrawer.addEventListener("click", closeRegionDrawer);
 els.drawerBackdrop.addEventListener("click", closeRegionDrawer);
+els.closeMoreDrawer.addEventListener("click", closeMoreDrawer);
+els.moreBackdrop.addEventListener("click", closeMoreDrawer);
 
 els.revealDialog.addEventListener("cancel", () => {
   pendingRevealId = null;
 });
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && state.moreDrawerOpen) {
+    closeMoreDrawer();
+    return;
+  }
+
   if (event.key === "Escape" && state.regionDrawerOpen) {
     closeRegionDrawer();
   }

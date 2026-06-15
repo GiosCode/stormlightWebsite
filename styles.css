@@ -353,7 +353,8 @@ h1 {
 .detail-panel h2,
 .timeline-panel h2,
 .map-section h2,
-.region-drawer h2 {
+.region-drawer h2,
+.more-drawer h2 {
   margin-bottom: 10px;
   color: var(--ink-strong);
   font-size: 1.4rem;
@@ -847,7 +848,8 @@ h1 {
   pointer-events: none;
 }
 
-.region-drawer {
+.region-drawer,
+.more-drawer {
   position: fixed;
   top: var(--topbar-height);
   right: 0;
@@ -863,11 +865,13 @@ h1 {
   backdrop-filter: blur(22px);
 }
 
-.region-drawer.is-open {
+.region-drawer.is-open,
+.more-drawer.is-open {
   transform: translateX(0);
 }
 
-.region-drawer-inner {
+.region-drawer-inner,
+.more-drawer-inner {
   height: 100%;
   overflow: auto;
   display: grid;
@@ -880,12 +884,14 @@ h1 {
   justify-self: end;
 }
 
-.region-content {
+.region-content,
+.more-content {
   display: grid;
   gap: 12px;
 }
 
 .region-info-block,
+.more-info-block,
 .locked-region-callout {
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -893,7 +899,8 @@ h1 {
   background: rgba(255, 255, 255, 0.065);
 }
 
-.region-info-block h3 {
+.region-info-block h3,
+.more-info-block h3 {
   margin: 0 0 8px;
   color: var(--ink-strong);
   font-size: 0.9rem;
@@ -901,6 +908,7 @@ h1 {
 }
 
 .region-info-block p,
+.more-info-block p,
 .locked-region-callout p {
   margin: 0;
   color: #d8e5df;
@@ -934,6 +942,25 @@ h1 {
 .region-character-list span {
   color: var(--ink-muted);
   line-height: 1.45;
+}
+
+.more-source {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.source-link {
+  color: #bff4ff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.source-link:hover {
+  text-decoration: underline;
 }
 
 .empty-state {
@@ -1083,7 +1110,8 @@ h1 {
     font-size: 24px;
   }
 
-  .region-drawer {
+  .region-drawer,
+  .more-drawer {
     top: 0;
     width: 100vw;
     max-width: 100vw;
@@ -1095,7 +1123,8 @@ h1 {
     pointer-events: auto;
   }
 
-  .region-drawer-inner {
+  .region-drawer-inner,
+  .more-drawer-inner {
     padding: 18px;
   }
 

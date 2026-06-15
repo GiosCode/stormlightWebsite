@@ -148,6 +148,20 @@
     </aside>
     <button class="drawer-backdrop" id="drawerBackdrop" type="button" aria-label="Close region panel"></button>
 
+    <aside class="more-drawer" id="moreDrawer" aria-hidden="true" aria-labelledby="moreTitle">
+      <div class="more-drawer-inner">
+        <button id="closeMoreDrawer" class="icon-button drawer-close" type="button" title="Close detail panel" aria-label="Close detail panel">&times;</button>
+        <div class="detail-meta">
+          <span id="moreType">Detail</span>
+          <span id="moreGate">Safe</span>
+        </div>
+        <h2 id="moreTitle">Select an entry</h2>
+        <p id="moreSummary" class="detail-body"></p>
+        <div id="moreContent" class="more-content"></div>
+      </div>
+    </aside>
+    <button class="drawer-backdrop" id="moreBackdrop" type="button" aria-label="Close detail panel"></button>
+
     <dialog class="reveal-dialog" id="revealDialog" aria-labelledby="revealTitle">
       <h2 id="revealTitle">Reveal locked entry?</h2>
       <p id="revealCopy"></p>
