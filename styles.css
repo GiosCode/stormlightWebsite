@@ -854,6 +854,9 @@ h1 {
 .relationship-line {
   stroke: var(--storm);
   stroke-width: 0.65;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
 }
 
@@ -861,13 +864,41 @@ h1 {
   stroke: var(--amber);
 }
 
-.relationship-line.type-mentor,
-.relationship-line.type-court {
-  stroke: var(--violet);
+.relationship-line.type-status {
+  stroke: #ffd77b;
+  stroke-width: 0.82;
+  stroke-dasharray: 12 5 2 5;
 }
 
-.relationship-line.type-crew {
+.relationship-line.type-emotional {
+  stroke: var(--violet);
+  stroke-dasharray: 9 7;
+}
+
+.relationship-line.type-mentor {
+  stroke: var(--violet);
+  stroke-width: 0.78;
+}
+
+.relationship-line.type-hierarchy {
+  stroke: var(--storm);
+  stroke-dasharray: 4 6;
+}
+
+.relationship-line.type-faction {
   stroke: var(--leaf);
+  stroke-dasharray: 13 7;
+}
+
+.relationship-line.type-alliance {
+  stroke: var(--leaf);
+  stroke-width: 0.8;
+}
+
+.relationship-line.type-oath,
+.relationship-line.type-magic {
+  stroke: var(--storm);
+  stroke-width: 0.9;
 }
 
 .relationship-line.type-conflict {
@@ -911,12 +942,23 @@ h1 {
   color: var(--amber);
 }
 
-.relationship-label.type-mentor,
-.relationship-label.type-court {
+.relationship-label.type-status {
+  color: #ffd77b;
+}
+
+.relationship-label.type-emotional,
+.relationship-label.type-mentor {
   color: var(--violet);
 }
 
-.relationship-label.type-crew {
+.relationship-label.type-hierarchy,
+.relationship-label.type-oath,
+.relationship-label.type-magic {
+  color: var(--storm);
+}
+
+.relationship-label.type-faction,
+.relationship-label.type-alliance {
   color: var(--leaf);
 }
 
@@ -1133,16 +1175,43 @@ h1 {
   border-color: var(--amber);
 }
 
+.legend-line.type-status {
+  border-color: #ffd77b;
+  border-top-style: double;
+}
+
+.legend-line.type-emotional {
+  border-color: var(--violet);
+  border-top-style: dashed;
+}
+
 .legend-line.type-mentor {
   border-color: var(--violet);
 }
 
-.legend-line.type-crew {
+.legend-line.type-hierarchy {
+  border-color: var(--storm);
+  border-top-style: dotted;
+}
+
+.legend-line.type-faction {
   border-color: var(--leaf);
+  border-top-style: dashed;
+}
+
+.legend-line.type-alliance {
+  border-color: var(--leaf);
+}
+
+.legend-line.type-oath {
+  position: relative;
+  border-color: var(--storm);
+  border-top-style: dotted;
 }
 
 .legend-line.type-conflict {
   border-color: var(--danger);
+  border-top-style: dashed;
 }
 
 .legend-line.is-locked {

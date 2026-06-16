@@ -1388,60 +1388,77 @@ const relationshipCharacters = [
 ];
 
 const relationshipLinks = [
-  { id: "kalak-jezrien", from: "kalak", to: "jezrien", type: "spoiler", label: "Heralds", threshold: gate("twok", 0) },
-  { id: "jezrien-taln", from: "jezrien", to: "taln", type: "spoiler", label: "Heralds", threshold: gate("twok", 0) },
-  { id: "jezrien-ishar", from: "jezrien", to: "ishar", type: "spoiler", label: "Heralds", threshold: gate("twok", 0) },
-  { id: "szeth-gavilar", from: "szeth", to: "gavilar", type: "conflict", label: "assassin / target", threshold: gate("twok", 0) },
+  { id: "kalak-jezrien", from: "kalak", to: "jezrien", type: "oath", label: "Oathpact", threshold: gate("twok", 0) },
+  { id: "jezrien-taln", from: "jezrien", to: "taln", type: "oath", label: "Oathpact", threshold: gate("twok", 0) },
+  { id: "jezrien-ishar", from: "jezrien", to: "ishar", type: "oath", label: "Heraldic order", threshold: gate("twok", 0) },
+  { id: "szeth-gavilar", from: "szeth", to: "gavilar", type: "conflict", label: "assassination", threshold: gate("twok", 0) },
   { id: "gavilar-dalinar", from: "gavilar", to: "dalinar", type: "family", label: "brothers", threshold: gate("twok", 12) },
-  { id: "gavilar-elhokar", from: "gavilar", to: "elhokar", type: "family", label: "father / son", threshold: gate("twok", 12) },
+  { id: "gavilar-elhokar", from: "gavilar", to: "elhokar", type: "status", label: "father / heir", threshold: gate("twok", 12) },
   { id: "gavilar-jasnah", from: "gavilar", to: "jasnah", type: "family", label: "father / daughter", threshold: gate("twok", 3) },
   { id: "gavilar-navani", from: "gavilar", to: "navani", type: "family", label: "husband / wife", threshold: gate("twok", 12) },
+  { id: "navani-elhokar", from: "navani", to: "elhokar", type: "family", label: "mother / son", threshold: gate("twok", 12) },
+  { id: "navani-jasnah", from: "navani", to: "jasnah", type: "family", label: "mother / daughter", threshold: gate("twok", 12) },
   { id: "lirin-hesina", from: "lirin", to: "hesina", type: "family", label: "husband / wife", threshold: gate("twok", 7) },
   { id: "lirin-kaladin", from: "lirin", to: "kaladin", type: "family", label: "father / son", threshold: gate("twok", 7) },
   { id: "hesina-kaladin", from: "hesina", to: "kaladin", type: "family", label: "mother / son", threshold: gate("twok", 7) },
   { id: "kaladin-tien", from: "kaladin", to: "tien", type: "family", label: "brothers", threshold: gate("twok", 7) },
-  { id: "kaladin-laral", from: "kaladin", to: "laral", type: "court", label: "friends", threshold: gate("twok", 7) },
+  { id: "kaladin-laral", from: "kaladin", to: "laral", type: "emotional", label: "childhood friends", threshold: gate("twok", 7) },
   { id: "wistiow-laral", from: "wistiow", to: "laral", type: "family", label: "father / daughter", threshold: gate("twok", 7) },
-  { id: "roshone-laral", from: "roshone", to: "laral", type: "court", label: "household tie", threshold: gate("twok", 10) },
-  { id: "kaladin-cenn", from: "kaladin", to: "cenn", type: "crew", label: "squad", threshold: gate("twok", 1) },
-  { id: "kaladin-dallet", from: "kaladin", to: "dallet", type: "crew", label: "squad", threshold: gate("twok", 1) },
-  { id: "kaladin-amaram", from: "kaladin", to: "amaram", type: "court", label: "commander", threshold: gate("twok", 1) },
+  { id: "roshone-laral", from: "roshone", to: "laral", type: "status", label: "household tie", threshold: gate("twok", 10) },
+  { id: "kaladin-cenn", from: "kaladin", to: "cenn", type: "faction", label: "squad", threshold: gate("twok", 1) },
+  { id: "kaladin-dallet", from: "kaladin", to: "dallet", type: "hierarchy", label: "squadleader", threshold: gate("twok", 1) },
+  { id: "kaladin-amaram", from: "kaladin", to: "amaram", type: "hierarchy", label: "commander", threshold: gate("twok", 1) },
   { id: "kaladin-tvlakv", from: "kaladin", to: "tvlakv", type: "conflict", label: "enslaver", threshold: gate("twok", 2) },
-  { id: "tvlakv-bluth", from: "tvlakv", to: "bluth", type: "crew", label: "guard", threshold: gate("twok", 2) },
-  { id: "kaladin-syl", from: "kaladin", to: "syl", type: "mentor", label: "companion", threshold: gate("twok", 2) },
+  { id: "tvlakv-bluth", from: "tvlakv", to: "bluth", type: "hierarchy", label: "guard", threshold: gate("twok", 2) },
+  { id: "kaladin-syl", from: "kaladin", to: "syl", type: "magic", label: "spren tie", threshold: gate("twok", 2) },
   { id: "kaladin-gaz", from: "kaladin", to: "gaz", type: "conflict", label: "sergeant", threshold: gate("twok", 4) },
-  { id: "gaz-lamaril", from: "gaz", to: "lamaril", type: "crew", label: "officer", threshold: gate("twok", 4) },
-  { id: "kaladin-teft", from: "kaladin", to: "teft", type: "crew", label: "comrades", threshold: gate("twok", 9) },
-  { id: "kaladin-moash", from: "kaladin", to: "moash", type: "crew", label: "comrades", threshold: gate("twok", 9) },
-  { id: "kaladin-rock", from: "kaladin", to: "rock", type: "crew", label: "comrades", threshold: gate("twok", 9) },
-  { id: "kaladin-maps", from: "kaladin", to: "maps", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
-  { id: "kaladin-dunny", from: "kaladin", to: "dunny", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
-  { id: "kaladin-skar", from: "kaladin", to: "skar", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
-  { id: "kaladin-leyten", from: "kaladin", to: "leyten", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
-  { id: "kaladin-hobber", from: "kaladin", to: "hobber", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
-  { id: "shallan-yalb", from: "shallan", to: "yalb", type: "crew", label: "passenger / sailor", threshold: gate("twok", 3) },
-  { id: "yalb-tozbek", from: "yalb", to: "tozbek", type: "crew", label: "crew", threshold: gate("twok", 3) },
+  { id: "gaz-lamaril", from: "gaz", to: "lamaril", type: "hierarchy", label: "officer", threshold: gate("twok", 4) },
+  { id: "kaladin-teft", from: "kaladin", to: "teft", type: "alliance", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-moash", from: "kaladin", to: "moash", type: "alliance", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-rock", from: "kaladin", to: "rock", type: "alliance", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-maps", from: "kaladin", to: "maps", type: "faction", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-dunny", from: "kaladin", to: "dunny", type: "faction", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-skar", from: "kaladin", to: "skar", type: "faction", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-leyten", from: "kaladin", to: "leyten", type: "faction", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-hobber", from: "kaladin", to: "hobber", type: "faction", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "shallan-yalb", from: "shallan", to: "yalb", type: "faction", label: "passenger / sailor", threshold: gate("twok", 3) },
+  { id: "yalb-tozbek", from: "yalb", to: "tozbek", type: "hierarchy", label: "captain / crew", threshold: gate("twok", 3) },
   { id: "shallan-jasnah", from: "shallan", to: "jasnah", type: "mentor", label: "mentor / ward", threshold: gate("twok", 3) },
   { id: "shallan-balat", from: "shallan", to: "balat", type: "family", label: "siblings", threshold: gate("twok", 3) },
   { id: "shallan-wikim", from: "shallan", to: "wikim", type: "family", label: "siblings", threshold: gate("twok", 3) },
   { id: "shallan-jushu", from: "shallan", to: "jushu", type: "family", label: "siblings", threshold: gate("twok", 3) },
   { id: "shallan-helaran", from: "shallan", to: "helaran", type: "family", label: "siblings", threshold: gate("twok", 3) },
-  { id: "shallan-kabsal", from: "shallan", to: "kabsal", type: "mentor", label: "acquaintances", threshold: gate("twok", 5) },
-  { id: "jasnah-kabsal", from: "jasnah", to: "kabsal", type: "mentor", label: "debates", threshold: gate("twok", 5) },
-  { id: "jasnah-taravangian", from: "jasnah", to: "taravangian", type: "court", label: "guest / king", threshold: gate("twok", 5) },
+  { id: "shallan-kabsal", from: "shallan", to: "kabsal", type: "emotional", label: "interest", threshold: gate("twok", 5) },
+  { id: "jasnah-kabsal", from: "jasnah", to: "kabsal", type: "conflict", label: "debates", threshold: gate("twok", 5) },
+  { id: "jasnah-taravangian", from: "jasnah", to: "taravangian", type: "status", label: "guest / king", threshold: gate("twok", 5) },
   { id: "jasnah-dalinar", from: "jasnah", to: "dalinar", type: "family", label: "niece / uncle", threshold: gate("twok", 12) },
-  { id: "dalinar-adolin", from: "dalinar", to: "adolin", type: "family", label: "father / son", threshold: gate("twok", 12) },
+  { id: "dalinar-adolin", from: "dalinar", to: "adolin", type: "status", label: "son / heir", threshold: gate("twok", 12) },
   { id: "dalinar-renarin", from: "dalinar", to: "renarin", type: "family", label: "father / son", threshold: gate("twok", 18) },
+  { id: "adolin-renarin", from: "adolin", to: "renarin", type: "family", label: "brothers", threshold: gate("twok", 18) },
   { id: "dalinar-elhokar", from: "dalinar", to: "elhokar", type: "family", label: "uncle / nephew", threshold: gate("twok", 12) },
   { id: "elhokar-adolin", from: "elhokar", to: "adolin", type: "family", label: "cousins", threshold: gate("twok", 12) },
-  { id: "dalinar-sadeas", from: "dalinar", to: "sadeas", type: "court", label: "highprinces", threshold: gate("twok", 12) },
-  { id: "elhokar-wit", from: "elhokar", to: "wit", type: "court", label: "king / Wit", threshold: gate("twok", 12) },
-  { id: "dalinar-gallant", from: "dalinar", to: "gallant", type: "crew", label: "rider / mount", threshold: gate("twok", 12) },
+  { id: "dalinar-sadeas", from: "dalinar", to: "sadeas", type: "alliance", label: "highprinces", threshold: gate("twok", 12) },
+  { id: "elhokar-wit", from: "elhokar", to: "wit", type: "hierarchy", label: "king / Wit", threshold: gate("twok", 12) },
+  { id: "dalinar-gallant", from: "dalinar", to: "gallant", type: "emotional", label: "rider / mount", threshold: gate("twok", 12) },
   { id: "rysn-vstim", from: "rysn", to: "vstim", type: "mentor", label: "babsk", threshold: gate("twok", 11) },
-  { id: "adolin-shallan", from: "adolin", to: "shallan", type: "court", label: "courtship", threshold: gate("wor", 12) },
+  { id: "adolin-shallan", from: "adolin", to: "shallan", type: "emotional", label: "courtship", threshold: gate("wor", 12) },
   { id: "szeth-dalinar", from: "szeth", to: "dalinar", type: "conflict", label: "enemies", threshold: gate("twok", 75) },
   { id: "lift-venli", from: "lift", to: "venli", type: "spoiler", label: "later arcs", threshold: gate("row", 1) }
 ];
+
+const relationshipTypeNames = {
+  family: "Kinship",
+  status: "Status or heirship",
+  emotional: "Personal tie",
+  mentor: "Mentorship",
+  hierarchy: "Hierarchy",
+  faction: "Faction",
+  alliance: "Alliance",
+  oath: "Oath or pact",
+  magic: "Magical tie",
+  conflict: "Conflict",
+  spoiler: "Later arc"
+};
 
 const RELATIONSHIP_CANVAS = {
   width: 1680,
@@ -1968,6 +1985,68 @@ function relationshipLabelLayout(from, to, label) {
   };
 }
 
+function straightRelationshipPath(from, to) {
+  return `M ${from.x} ${from.y} L ${to.x} ${to.y}`;
+}
+
+function wavyRelationshipPath(from, to) {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const distance = Math.hypot(dx, dy) || 1;
+  const normalX = -dy / distance;
+  const normalY = dx / distance;
+  const segments = Math.max(4, Math.min(12, Math.round(distance / 180)));
+  const amplitude = 18;
+  const parts = [`M ${from.x} ${from.y}`];
+
+  for (let index = 1; index <= segments; index += 1) {
+    const controlT = (index - 0.5) / segments;
+    const endT = index / segments;
+    const direction = index % 2 === 0 ? -1 : 1;
+    const controlX = from.x + (dx * controlT) + (normalX * amplitude * direction);
+    const controlY = from.y + (dy * controlT) + (normalY * amplitude * direction);
+    const endX = from.x + (dx * endT);
+    const endY = from.y + (dy * endT);
+    parts.push(`Q ${controlX} ${controlY} ${endX} ${endY}`);
+  }
+
+  return parts.join(" ");
+}
+
+function jaggedRelationshipPath(from, to) {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  const distance = Math.hypot(dx, dy) || 1;
+  const normalX = -dy / distance;
+  const normalY = dx / distance;
+  const segments = Math.max(5, Math.min(13, Math.round(distance / 150)));
+  const amplitude = 16;
+  const parts = [`M ${from.x} ${from.y}`];
+
+  for (let index = 1; index < segments; index += 1) {
+    const t = index / segments;
+    const direction = index % 2 === 0 ? -1 : 1;
+    const x = from.x + (dx * t) + (normalX * amplitude * direction);
+    const y = from.y + (dy * t) + (normalY * amplitude * direction);
+    parts.push(`L ${x} ${y}`);
+  }
+
+  parts.push(`L ${to.x} ${to.y}`);
+  return parts.join(" ");
+}
+
+function relationshipPath(type, from, to) {
+  if (type === "oath" || type === "magic") {
+    return wavyRelationshipPath(from, to);
+  }
+
+  if (type === "conflict") {
+    return jaggedRelationshipPath(from, to);
+  }
+
+  return straightRelationshipPath(from, to);
+}
+
 function relationshipScrollPane() {
   return els.relationshipTree.querySelector(".relationship-scroll");
 }
@@ -2123,14 +2202,15 @@ function renderRelationshipTree() {
       visible ? `type-${link.type}` : "is-locked"
     ].join(" ");
     const label = visible ? link.label : "Protected";
-    const title = visible ? link.label : "Protected relationship";
+    const title = visible ? `${relationshipTypeNames[link.type] || "Relationship"}: ${link.label}` : "Protected relationship";
     const fromPoint = relationshipPoint(from, layout);
     const toPoint = relationshipPoint(to, layout);
+    const path = relationshipPath(visible ? link.type : "locked", fromPoint, toPoint);
 
     return `
-      <line class="${classes}" x1="${fromPoint.x}" y1="${fromPoint.y}" x2="${toPoint.x}" y2="${toPoint.y}">
+      <path class="${classes}" d="${path}">
         <title>${title}</title>
-      </line>
+      </path>
     `;
   }).join("");
 
@@ -2217,9 +2297,14 @@ function renderRelationshipTree() {
 
   els.relationshipLegend.innerHTML = `
     <span><i class="legend-line type-family"></i>Family</span>
-    <span><i class="legend-line type-mentor"></i>Mentor or study</span>
-    <span><i class="legend-line type-crew"></i>Crew or alliance</span>
-    <span><i class="legend-line type-conflict"></i>Conflict</span>
+    <span><i class="legend-line type-status"></i>Status or heirs</span>
+    <span><i class="legend-line type-emotional"></i>Personal ties</span>
+    <span><i class="legend-line type-mentor"></i>Mentorship</span>
+    <span><i class="legend-line type-hierarchy"></i>Hierarchy</span>
+    <span><i class="legend-line type-faction"></i>Faction</span>
+    <span><i class="legend-line type-alliance"></i>Alliance</span>
+    <span><i class="legend-line type-oath"></i>Oath or magic</span>
+    <span><i class="legend-line type-conflict"></i>Rivalry or feud</span>
     <span><i class="legend-line is-locked"></i>Protected</span>
   `;
 }
