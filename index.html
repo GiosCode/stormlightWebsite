@@ -60,10 +60,16 @@
                 </div>
               </fieldset>
 
-              <label class="toggle-row">
-                <input id="lockedToggle" type="checkbox" checked>
-                <span>Show locked entries</span>
-              </label>
+              <div class="toggle-stack">
+                <label class="toggle-row">
+                  <input id="lockedToggle" type="checkbox" checked>
+                  <span>Show locked entries</span>
+                </label>
+                <label class="toggle-row character-minor-filter" id="characterMinorToggleRow" hidden>
+                  <input id="characterMinorToggle" type="checkbox" checked>
+                  <span>Minor characters</span>
+                </label>
+              </div>
             </form>
           </div>
         </section>

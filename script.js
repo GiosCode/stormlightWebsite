@@ -1485,6 +1485,8 @@ const els = {
   shieldStatus: document.querySelector("#shieldStatus"),
   searchInput: document.querySelector("#searchInput"),
   lockedToggle: document.querySelector("#lockedToggle"),
+  characterMinorToggle: document.querySelector("#characterMinorToggle"),
+  characterMinorToggleRow: document.querySelector("#characterMinorToggleRow"),
   segments: [...document.querySelectorAll(".segment")],
   thresholdTitle: document.querySelector("#thresholdTitle"),
   thresholdCopy: document.querySelector("#thresholdCopy"),
@@ -1556,6 +1558,62 @@ function categoryLabel(category) {
   return labels[category] || "Entry";
 }
 
+function characterEntryFromRelationship(character) {
+  return {
+    id: character.id,
+    category: "characters",
+    threshold: character.threshold,
+    title: character.name,
+    summary: `${character.role} connected to ${character.origin}.`,
+    body: `${character.name} appears in the relationship tree as ${character.role.toLowerCase()} from ${character.origin}. Details stay intentionally brief so this entry remains safe at the selected chapter threshold.`,
+    tags: ["Character", character.origin, character.role, character.minor ? "Minor" : "Major"].filter(Boolean),
+    minor: Boolean(character.minor),
+    generatedFromRelationship: true
+  };
+}
+
+function allEntries() {
+  const characterIds = new Set(entries.filter((entry) => entry.category === "characters").map((entry) => entry.id));
+  const generatedCharacters = relationshipCharacters
+    .filter((character) => !characterIds.has(character.id))
+    .map(characterEntryFromRelationship);
+
+  return entries
+    .map((entry) => {
+      if (entry.category !== "characters") {
+        return entry;
+      }
+
+      const relationshipCharacter = relationshipCharacterById(entry.id);
+      return {
+        ...entry,
+        minor: Boolean(relationshipCharacter?.minor),
+        tags: [...(entry.tags || []), relationshipCharacter?.minor ? "Minor" : "Major"].filter(Boolean)
+      };
+    })
+    .concat(generatedCharacters);
+}
+
+function sortAtlasEntries(items) {
+  if (state.category !== "characters") {
+    return items;
+  }
+
+  return [...items].sort((a, b) => {
+    const majorDelta = Number(Boolean(a.minor)) - Number(Boolean(b.minor));
+    if (majorDelta !== 0) {
+      return majorDelta;
+    }
+
+    const thresholdDelta = positionScore(a.threshold) - positionScore(b.threshold);
+    if (thresholdDelta !== 0) {
+      return thresholdDelta;
+    }
+
+    return a.title.localeCompare(b.title);
+  });
+}
+
 function searchableText(item) {
   if (isUnlocked(item)) {
     return [item.title, item.summary, item.body, ...(item.tags || [])].join(" ").toLowerCase();
@@ -1565,12 +1623,15 @@ function searchableText(item) {
 
 function filteredEntries() {
   const query = state.search.trim().toLowerCase();
-  return entries.filter((item) => {
+  const visible = allEntries().filter((item) => {
     const categoryMatch = item.category === state.category;
     const lockMatch = state.showLocked || isUnlocked(item);
+    const minorMatch = state.category !== "characters" || state.showMinorCharacters || !item.minor;
     const searchMatch = !query || searchableText(item).includes(query);
-    return categoryMatch && lockMatch && searchMatch;
+    return categoryMatch && lockMatch && minorMatch && searchMatch;
   });
+
+  return sortAtlasEntries(visible);
 }
 
 function renderProgressControls() {
@@ -1647,10 +1708,19 @@ function renderSegments() {
     button.classList.toggle("is-active", active);
     button.setAttribute("aria-selected", String(active));
   });
+
+  if (els.characterMinorToggleRow) {
+    els.characterMinorToggleRow.hidden = state.category !== "characters";
+  }
+
+  if (els.characterMinorToggle) {
+    els.characterMinorToggle.checked = state.showMinorCharacters;
+  }
 }
 
 function renderCards() {
   const visible = filteredEntries();
+  els.cardGrid.classList.toggle("is-character-strip", state.category === "characters");
 
   if (!visible.length) {
     els.cardGrid.innerHTML = `<div class="empty-state">No entries match the current filters.</div>`;
@@ -1687,7 +1757,7 @@ function renderCards() {
 }
 
 function renderDetail() {
-  const item = entries.find((entry) => entry.id === state.selectedId) || filteredEntries()[0];
+  const item = allEntries().find((entry) => entry.id === state.selectedId) || filteredEntries()[0];
 
   if (!item) {
     els.detailType.textContent = categoryLabel(state.category);
@@ -2231,7 +2301,7 @@ function closeRegionDrawer() {
 }
 
 function entryById(id) {
-  return entries.find((entry) => entry.id === id) || entries[0];
+  return allEntries().find((entry) => entry.id === id) || allEntries()[0];
 }
 
 function renderMoreSection(title, body) {
@@ -2268,7 +2338,8 @@ function renderMoreDrawer() {
     return;
   }
 
-  const sections = detail?.sections?.map((section) => renderMoreSection(section.title, section.body)).join("") || "";
+  const sections = detail?.sections?.map((section) => renderMoreSection(section.title, section.body)).join("")
+    || (item.generatedFromRelationship ? renderMoreSection("Relationship tree", item.body) : "");
   const source = detail?.sourceUrl
     ? `<a class="source-link" href="${detail.sourceUrl}" target="_blank" rel="noopener noreferrer">Coppermind topic page</a>`
     : "";
@@ -2292,6 +2363,32 @@ function closeMoreDrawer() {
   renderMoreDrawer();
 }
 
+function setMinorCharactersVisible(showMinor, resetRelationshipScroll = false) {
+  state.showMinorCharacters = showMinor;
+
+  const selectedRelationshipCharacter = relationshipCharacterById(state.selectedRelationshipCharacterId);
+  if (selectedRelationshipCharacter?.minor && !state.showMinorCharacters) {
+    state.selectedRelationshipCharacterId = null;
+  }
+
+  renderSegments();
+  renderCards();
+  if (state.moreDrawerOpen && state.category === "characters") {
+    state.selectedMoreId = state.selectedId;
+  }
+  renderDetail();
+  renderRelationshipTree();
+  renderMoreDrawer();
+
+  if (resetRelationshipScroll) {
+    const scrollPane = relationshipScrollPane();
+    if (scrollPane) {
+      scrollPane.scrollLeft = 0;
+      scrollPane.scrollTop = 0;
+    }
+  }
+}
+
 function render() {
   renderReaderState();
   renderSegments();
@@ -2305,7 +2402,7 @@ function render() {
 }
 
 function openRevealDialog(id) {
-  const item = [...entries, ...timelineEvents, ...worldRegions].find((candidate) => candidate.id === id);
+  const item = [...allEntries(), ...timelineEvents, ...worldRegions].find((candidate) => candidate.id === id);
   if (!item) {
     return;
   }
@@ -2333,7 +2430,7 @@ function confirmReveal() {
   }
 
   state.revealed.add(pendingRevealId);
-  const revealedEntry = entries.find((item) => item.id === pendingRevealId);
+  const revealedEntry = allEntries().find((item) => item.id === pendingRevealId);
   const revealedRegion = worldRegions.find((item) => item.id === pendingRevealId);
   if (revealedEntry) {
     state.category = revealedEntry.category;
@@ -2381,6 +2478,10 @@ els.lockedToggle.addEventListener("change", (event) => {
   state.showLocked = event.target.checked;
   renderCards();
   renderDetail();
+});
+
+els.characterMinorToggle.addEventListener("change", (event) => {
+  setMinorCharactersVisible(event.target.checked, true);
 });
 
 els.segments.forEach((button) => {
@@ -2476,20 +2577,7 @@ els.relationshipTree.addEventListener("change", (event) => {
     return;
   }
 
-  state.showMinorCharacters = minorToggle.checked;
-
-  const selectedCharacter = relationshipCharacterById(state.selectedRelationshipCharacterId);
-  if (selectedCharacter?.minor && !state.showMinorCharacters) {
-    state.selectedRelationshipCharacterId = null;
-  }
-
-  renderRelationshipTree();
-
-  const scrollPane = relationshipScrollPane();
-  if (scrollPane) {
-    scrollPane.scrollLeft = 0;
-    scrollPane.scrollTop = 0;
-  }
+  setMinorCharactersVisible(minorToggle.checked, true);
 });
 
 els.relationshipTree.addEventListener("keydown", (event) => {
