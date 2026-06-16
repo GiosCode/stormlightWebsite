@@ -898,6 +898,13 @@ const RELATIONSHIP_CANVAS = {
   height: 880
 };
 
+const RELATIONSHIP_ZOOM = {
+  default: 1,
+  min: 0.65,
+  max: 1.7,
+  step: 0.15
+};
+
 const state = {
   position: readSavedPosition(),
   category: "world",
@@ -909,6 +916,7 @@ const state = {
   selectedMoreId: "roshar",
   moreDrawerOpen: false,
   selectedRelationshipCharacterId: null,
+  relationshipZoom: RELATIONSHIP_ZOOM.default,
   timelineIndex: 0,
   revealed: new Set()
 };
@@ -963,6 +971,7 @@ const els = {
 };
 
 let pendingRevealId = null;
+let relationshipPinch = null;
 
 function isUnlocked(item) {
   return positionScore(item.threshold) <= positionScore(state.position) || state.revealed.has(item.id);
@@ -1284,6 +1293,98 @@ function relationshipLabelLayout(from, to, label) {
   };
 }
 
+function relationshipScrollPane() {
+  return els.relationshipTree.querySelector(".relationship-scroll");
+}
+
+function clampRelationshipZoom(value) {
+  return Math.min(RELATIONSHIP_ZOOM.max, Math.max(RELATIONSHIP_ZOOM.min, value));
+}
+
+function applyRelationshipZoom() {
+  const zoom = clampRelationshipZoom(state.relationshipZoom);
+  state.relationshipZoom = zoom;
+
+  const viewport = els.relationshipTree.querySelector(".relationship-viewport");
+  const canvas = els.relationshipTree.querySelector(".relationship-canvas");
+  const value = els.relationshipTree.querySelector("[data-relationship-zoom-value]");
+  const zoomOut = els.relationshipTree.querySelector("[data-relationship-zoom='out']");
+  const zoomIn = els.relationshipTree.querySelector("[data-relationship-zoom='in']");
+
+  if (viewport) {
+    viewport.style.width = `${RELATIONSHIP_CANVAS.width * zoom}px`;
+    viewport.style.height = `${RELATIONSHIP_CANVAS.height * zoom}px`;
+  }
+
+  if (canvas) {
+    canvas.style.setProperty("--relationship-zoom", zoom);
+  }
+
+  if (value) {
+    value.textContent = `${Math.round(zoom * 100)}%`;
+  }
+
+  if (zoomOut) {
+    zoomOut.disabled = zoom <= RELATIONSHIP_ZOOM.min;
+  }
+
+  if (zoomIn) {
+    zoomIn.disabled = zoom >= RELATIONSHIP_ZOOM.max;
+  }
+}
+
+function setRelationshipZoom(nextZoom, focusPoint) {
+  const scrollPane = relationshipScrollPane();
+  const previousZoom = state.relationshipZoom;
+  const zoom = clampRelationshipZoom(nextZoom);
+
+  if (!scrollPane || Math.abs(previousZoom - zoom) < 0.001) {
+    state.relationshipZoom = zoom;
+    applyRelationshipZoom();
+    return;
+  }
+
+  const rect = scrollPane.getBoundingClientRect();
+  const focusX = focusPoint ? focusPoint.x - rect.left : scrollPane.clientWidth / 2;
+  const focusY = focusPoint ? focusPoint.y - rect.top : scrollPane.clientHeight / 2;
+  const contentX = (scrollPane.scrollLeft + focusX) / previousZoom;
+  const contentY = (scrollPane.scrollTop + focusY) / previousZoom;
+
+  state.relationshipZoom = zoom;
+  applyRelationshipZoom();
+
+  scrollPane.scrollLeft = (contentX * zoom) - focusX;
+  scrollPane.scrollTop = (contentY * zoom) - focusY;
+}
+
+function shiftRelationshipZoom(direction, focusPoint) {
+  setRelationshipZoom(state.relationshipZoom + (direction * RELATIONSHIP_ZOOM.step), focusPoint);
+}
+
+function resetRelationshipView() {
+  const scrollPane = relationshipScrollPane();
+  state.relationshipZoom = RELATIONSHIP_ZOOM.default;
+  applyRelationshipZoom();
+
+  if (scrollPane) {
+    scrollPane.scrollLeft = 0;
+    scrollPane.scrollTop = 0;
+  }
+}
+
+function distanceBetweenTouches(touches) {
+  const [first, second] = touches;
+  return Math.hypot(second.clientX - first.clientX, second.clientY - first.clientY);
+}
+
+function centerBetweenTouches(touches) {
+  const [first, second] = touches;
+  return {
+    x: (first.clientX + second.clientX) / 2,
+    y: (first.clientY + second.clientY) / 2
+  };
+}
+
 function renderPortrait(character, unlocked) {
   if (!unlocked) {
     return `
@@ -1308,6 +1409,9 @@ function renderPortrait(character, unlocked) {
 }
 
 function renderRelationshipTree() {
+  const previousScrollPane = relationshipScrollPane();
+  const scrollLeft = previousScrollPane?.scrollLeft || 0;
+  const scrollTop = previousScrollPane?.scrollTop || 0;
   const links = relationshipLinks.map((link) => {
     const from = relationshipCharacterById(link.from);
     const to = relationshipCharacterById(link.to);
@@ -1380,14 +1484,32 @@ function renderRelationshipTree() {
   }).join("");
 
   els.relationshipTree.innerHTML = `
-    <div class="relationship-canvas">
-      <svg class="relationship-lines" viewBox="0 0 ${RELATIONSHIP_CANVAS.width} ${RELATIONSHIP_CANVAS.height}" aria-hidden="true">
-        ${links}
-        ${labels}
-      </svg>
-      ${nodes}
+    <div class="relationship-zoom-controls" aria-label="Relationship tree zoom controls">
+      <button type="button" data-relationship-zoom="out" title="Zoom out" aria-label="Zoom out">-</button>
+      <span data-relationship-zoom-value aria-live="polite">100%</span>
+      <button type="button" data-relationship-zoom="reset" title="Reset relationship tree view" aria-label="Reset relationship tree view">Reset</button>
+      <button type="button" data-relationship-zoom="in" title="Zoom in" aria-label="Zoom in">+</button>
+    </div>
+    <div class="relationship-scroll">
+      <div class="relationship-viewport">
+        <div class="relationship-canvas">
+          <svg class="relationship-lines" viewBox="0 0 ${RELATIONSHIP_CANVAS.width} ${RELATIONSHIP_CANVAS.height}" aria-hidden="true">
+            ${links}
+            ${labels}
+          </svg>
+          ${nodes}
+        </div>
+      </div>
     </div>
   `;
+
+  applyRelationshipZoom();
+
+  const scrollPane = relationshipScrollPane();
+  if (scrollPane) {
+    scrollPane.scrollLeft = scrollLeft;
+    scrollPane.scrollTop = scrollTop;
+  }
 
   els.relationshipLegend.innerHTML = `
     <span><i class="legend-line type-family"></i>Family</span>
@@ -1694,6 +1816,19 @@ els.mapCanvas.addEventListener("keydown", (event) => {
 });
 
 els.relationshipTree.addEventListener("click", (event) => {
+  const zoomButton = event.target.closest("[data-relationship-zoom]");
+  if (zoomButton) {
+    const action = zoomButton.dataset.relationshipZoom;
+    if (action === "in") {
+      shiftRelationshipZoom(1);
+    } else if (action === "out") {
+      shiftRelationshipZoom(-1);
+    } else {
+      resetRelationshipView();
+    }
+    return;
+  }
+
   const character = event.target.closest("[data-character-id]");
   if (!character) {
     return;
@@ -1711,6 +1846,46 @@ els.relationshipTree.addEventListener("keydown", (event) => {
   state.selectedRelationshipCharacterId = character.dataset.characterId;
   renderRelationshipTree();
 });
+
+els.relationshipTree.addEventListener("wheel", (event) => {
+  if (!event.ctrlKey || !event.target.closest(".relationship-scroll")) {
+    return;
+  }
+
+  event.preventDefault();
+  shiftRelationshipZoom(event.deltaY < 0 ? 1 : -1, { x: event.clientX, y: event.clientY });
+}, { passive: false });
+
+els.relationshipTree.addEventListener("touchstart", (event) => {
+  if (event.touches.length !== 2 || !event.target.closest(".relationship-scroll")) {
+    return;
+  }
+
+  relationshipPinch = {
+    distance: distanceBetweenTouches(event.touches),
+    zoom: state.relationshipZoom
+  };
+}, { passive: true });
+
+els.relationshipTree.addEventListener("touchmove", (event) => {
+  if (!relationshipPinch || event.touches.length !== 2 || !event.target.closest(".relationship-scroll")) {
+    return;
+  }
+
+  event.preventDefault();
+  const ratio = distanceBetweenTouches(event.touches) / relationshipPinch.distance;
+  setRelationshipZoom(relationshipPinch.zoom * ratio, centerBetweenTouches(event.touches));
+}, { passive: false });
+
+els.relationshipTree.addEventListener("touchend", (event) => {
+  if (event.touches.length < 2) {
+    relationshipPinch = null;
+  }
+}, { passive: true });
+
+els.relationshipTree.addEventListener("touchcancel", () => {
+  relationshipPinch = null;
+}, { passive: true });
 
 els.timelineScrubber.addEventListener("wheel", (event) => {
   if (Math.abs(event.deltaY) < 4) {
