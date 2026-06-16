@@ -765,8 +765,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 1),
-    x: 15,
-    y: 42,
+    x: 12,
+    y: 50,
     portrait: { skin: "#9f6b4d", hair: "#171717", coat: "#263f45", accent: "#4fb7c5" }
   },
   {
@@ -776,8 +776,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 7),
-    x: 13,
-    y: 18,
+    x: 12,
+    y: 17,
     portrait: { skin: "#a87355", hair: "#1f1a18", coat: "#35535a", accent: "#88a86b" }
   },
   {
@@ -787,8 +787,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 14),
-    x: 30,
-    y: 54,
+    x: 12,
+    y: 83,
     portrait: { skin: "#9a684d", hair: "#2e2925", coat: "#33434a", accent: "#4fb7c5" }
   },
   {
@@ -798,8 +798,8 @@ const relationshipCharacters = [
     origin: "Jah Keved",
     tone: "amber",
     threshold: gate("twok", 3),
-    x: 36,
-    y: 18,
+    x: 35,
+    y: 17,
     portrait: { skin: "#d9b29a", hair: "#9c3d2f", coat: "#604354", accent: "#f0a648" }
   },
   {
@@ -809,8 +809,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 3),
-    x: 54,
-    y: 18,
+    x: 58,
+    y: 17,
     portrait: { skin: "#9f6b4d", hair: "#121212", coat: "#222b38", accent: "#ad82ff" }
   },
   {
@@ -821,7 +821,7 @@ const relationshipCharacters = [
     tone: "storm",
     threshold: gate("twok", 12),
     x: 58,
-    y: 48,
+    y: 50,
     portrait: { skin: "#966249", hair: "#1f1f1f", coat: "#253746", accent: "#f0a648" }
   },
   {
@@ -831,8 +831,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 12),
-    x: 76,
-    y: 35,
+    x: 82,
+    y: 42,
     portrait: { skin: "#a96f4f", hair: "#c8a14c", coat: "#2d4059", accent: "#4fb7c5" }
   },
   {
@@ -842,8 +842,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 18),
-    x: 78,
-    y: 62,
+    x: 82,
+    y: 72,
     portrait: { skin: "#a06a4e", hair: "#45362c", coat: "#263240", accent: "#88a86b" }
   },
   {
@@ -853,8 +853,8 @@ const relationshipCharacters = [
     origin: "Shinovar",
     tone: "leaf",
     threshold: gate("twok", 0),
-    x: 86,
-    y: 14,
+    x: 84,
+    y: 17,
     portrait: { skin: "#d7c4ae", hair: "#f0f0e9", coat: "#5b6659", accent: "#88a86b" }
   },
   {
@@ -864,7 +864,7 @@ const relationshipCharacters = [
     origin: "Makabak",
     tone: "amber",
     threshold: gate("edgedancer", 1),
-    x: 34,
+    x: 35,
     y: 78,
     portrait: { skin: "#8f5b3e", hair: "#2b201b", coat: "#4d5130", accent: "#f0a648" }
   },
@@ -876,22 +876,27 @@ const relationshipCharacters = [
     tone: "violet",
     threshold: gate("ob", 1),
     x: 58,
-    y: 82,
+    y: 83,
     portrait: { skin: "#8b6a75", hair: "#3b2a31", coat: "#4c384f", accent: "#ad82ff" }
   }
 ];
 
 const relationshipLinks = [
   { id: "kaladin-tien", from: "kaladin", to: "tien", type: "family", label: "brothers", threshold: gate("twok", 7) },
-  { id: "kaladin-teft", from: "kaladin", to: "teft", type: "crew", label: "Bridge Four", threshold: gate("twok", 14) },
-  { id: "shallan-jasnah", from: "shallan", to: "jasnah", type: "mentor", label: "scholarship", threshold: gate("twok", 3) },
-  { id: "jasnah-dalinar", from: "jasnah", to: "dalinar", type: "family", label: "Kholin family", threshold: gate("twok", 12) },
-  { id: "dalinar-adolin", from: "dalinar", to: "adolin", type: "family", label: "father and son", threshold: gate("twok", 12) },
-  { id: "dalinar-renarin", from: "dalinar", to: "renarin", type: "family", label: "father and son", threshold: gate("twok", 18) },
-  { id: "adolin-shallan", from: "adolin", to: "shallan", type: "court", label: "court connection", threshold: gate("wor", 12) },
-  { id: "szeth-dalinar", from: "szeth", to: "dalinar", type: "conflict", label: "spoiler conflict", threshold: gate("twok", 75) },
+  { id: "kaladin-teft", from: "kaladin", to: "teft", type: "crew", label: "comrades", threshold: gate("twok", 14) },
+  { id: "shallan-jasnah", from: "shallan", to: "jasnah", type: "mentor", label: "mentor / ward", threshold: gate("twok", 3) },
+  { id: "jasnah-dalinar", from: "jasnah", to: "dalinar", type: "family", label: "niece / uncle", threshold: gate("twok", 12) },
+  { id: "dalinar-adolin", from: "dalinar", to: "adolin", type: "family", label: "father / son", threshold: gate("twok", 12) },
+  { id: "dalinar-renarin", from: "dalinar", to: "renarin", type: "family", label: "father / son", threshold: gate("twok", 18) },
+  { id: "adolin-shallan", from: "adolin", to: "shallan", type: "court", label: "courtship", threshold: gate("wor", 12) },
+  { id: "szeth-dalinar", from: "szeth", to: "dalinar", type: "conflict", label: "enemies", threshold: gate("twok", 75) },
   { id: "lift-venli", from: "lift", to: "venli", type: "spoiler", label: "later arc proximity", threshold: gate("row", 1) }
 ];
+
+const RELATIONSHIP_CANVAS = {
+  width: 1160,
+  height: 720
+};
 
 const state = {
   position: readSavedPosition(),
@@ -903,6 +908,7 @@ const state = {
   regionDrawerOpen: false,
   selectedMoreId: "roshar",
   moreDrawerOpen: false,
+  selectedRelationshipCharacterId: null,
   timelineIndex: 0,
   revealed: new Set()
 };
@@ -1247,6 +1253,37 @@ function isRelationshipVisible(link) {
   return Boolean(from && to && isUnlocked(from) && isUnlocked(to) && isUnlocked(link));
 }
 
+function relationshipPoint(character) {
+  return {
+    x: (character.x / 100) * RELATIONSHIP_CANVAS.width,
+    y: (character.y / 100) * RELATIONSHIP_CANVAS.height
+  };
+}
+
+function readablePerpendicularAngle(from, to) {
+  const lineAngle = Math.atan2(to.y - from.y, to.x - from.x) * (180 / Math.PI);
+  let angle = lineAngle + 90;
+
+  while (angle > 90) {
+    angle -= 180;
+  }
+
+  while (angle < -90) {
+    angle += 180;
+  }
+
+  return angle;
+}
+
+function relationshipLabelLayout(from, to, label) {
+  return {
+    x: (from.x + to.x) / 2,
+    y: (from.y + to.y) / 2,
+    angle: readablePerpendicularAngle(from, to),
+    width: Math.min(190, Math.max(82, label.length * 8 + 34))
+  };
+}
+
 function renderPortrait(character, unlocked) {
   if (!unlocked) {
     return `
@@ -1283,27 +1320,57 @@ function renderRelationshipTree() {
       "relationship-line",
       visible ? `type-${link.type}` : "is-locked"
     ].join(" ");
-    const label = visible ? link.label : "Protected relationship";
+    const label = visible ? link.label : "Protected";
+    const title = visible ? link.label : "Protected relationship";
+    const fromPoint = relationshipPoint(from);
+    const toPoint = relationshipPoint(to);
 
     return `
-      <line class="${classes}" x1="${from.x}" y1="${from.y}" x2="${to.x}" y2="${to.y}">
-        <title>${label}</title>
+      <line class="${classes}" x1="${fromPoint.x}" y1="${fromPoint.y}" x2="${toPoint.x}" y2="${toPoint.y}">
+        <title>${title}</title>
       </line>
+    `;
+  }).join("");
+
+  const labels = relationshipLinks.map((link) => {
+    const from = relationshipCharacterById(link.from);
+    const to = relationshipCharacterById(link.to);
+    if (!from || !to) {
+      return "";
+    }
+
+    const visible = isRelationshipVisible(link);
+    const label = visible ? link.label : "Protected";
+    const fromPoint = relationshipPoint(from);
+    const toPoint = relationshipPoint(to);
+    const layout = relationshipLabelLayout(fromPoint, toPoint, label);
+    const classes = [
+      "relationship-label",
+      visible ? `type-${link.type}` : "is-locked"
+    ].join(" ");
+
+    return `
+      <g class="${classes}" transform="translate(${layout.x} ${layout.y}) rotate(${layout.angle})">
+        <rect x="${layout.width / -2}" y="-15" width="${layout.width}" height="30" rx="15"></rect>
+        <text y="0">${label}</text>
+      </g>
     `;
   }).join("");
 
   const nodes = relationshipCharacters.map((character) => {
     const unlocked = isUnlocked(character);
+    const active = character.id === state.selectedRelationshipCharacterId;
     const classes = [
       "relationship-node",
-      unlocked ? `origin-${character.tone}` : "is-locked"
+      unlocked ? `origin-${character.tone}` : "is-locked",
+      active ? "is-active" : ""
     ].join(" ");
     const name = unlocked ? character.name : "Locked character";
     const role = unlocked ? character.role : thresholdLabel(character.threshold);
     const origin = unlocked ? character.origin : "Protected";
 
     return `
-      <article class="${classes}" style="left: ${character.x}%; top: ${character.y}%;">
+      <article class="${classes}" style="left: ${character.x}%; top: ${character.y}%;" data-character-id="${character.id}" role="button" tabindex="0" aria-label="Bring ${name} to front">
         <div class="portrait-frame">${renderPortrait(character, unlocked)}</div>
         <h3>${name}</h3>
         <p>${role}</p>
@@ -1314,8 +1381,9 @@ function renderRelationshipTree() {
 
   els.relationshipTree.innerHTML = `
     <div class="relationship-canvas">
-      <svg class="relationship-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      <svg class="relationship-lines" viewBox="0 0 ${RELATIONSHIP_CANVAS.width} ${RELATIONSHIP_CANVAS.height}" aria-hidden="true">
         ${links}
+        ${labels}
       </svg>
       ${nodes}
     </div>
@@ -1325,6 +1393,7 @@ function renderRelationshipTree() {
     <span><i class="legend-line type-family"></i>Family</span>
     <span><i class="legend-line type-mentor"></i>Mentor or study</span>
     <span><i class="legend-line type-crew"></i>Crew or alliance</span>
+    <span><i class="legend-line type-conflict"></i>Conflict</span>
     <span><i class="legend-line is-locked"></i>Protected</span>
   `;
 }
@@ -1622,6 +1691,25 @@ els.mapCanvas.addEventListener("keydown", (event) => {
   }
   event.preventDefault();
   openRegionDrawer(region.dataset.regionId);
+});
+
+els.relationshipTree.addEventListener("click", (event) => {
+  const character = event.target.closest("[data-character-id]");
+  if (!character) {
+    return;
+  }
+  state.selectedRelationshipCharacterId = character.dataset.characterId;
+  renderRelationshipTree();
+});
+
+els.relationshipTree.addEventListener("keydown", (event) => {
+  const character = event.target.closest("[data-character-id]");
+  if (!character || !["Enter", " "].includes(event.key)) {
+    return;
+  }
+  event.preventDefault();
+  state.selectedRelationshipCharacterId = character.dataset.characterId;
+  renderRelationshipTree();
 });
 
 els.timelineScrubber.addEventListener("wheel", (event) => {
