@@ -1532,6 +1532,7 @@ const els = {
 
 let pendingRevealId = null;
 let relationshipPinch = null;
+let relationshipClickTimer = null;
 let relationshipCanvas = { ...RELATIONSHIP_CANVAS };
 
 function isUnlocked(item) {
@@ -2389,6 +2390,34 @@ function setMinorCharactersVisible(showMinor, resetRelationshipScroll = false) {
   }
 }
 
+function openCharacterPanelFromTree(characterId, openMore = false) {
+  const character = relationshipCharacterById(characterId);
+  if (!character) {
+    return;
+  }
+
+  state.selectedRelationshipCharacterId = characterId;
+  state.category = "characters";
+  state.selectedId = characterId;
+
+  if (character.minor) {
+    state.showMinorCharacters = true;
+  }
+
+  if (state.moreDrawerOpen || openMore) {
+    state.selectedMoreId = characterId;
+    state.moreDrawerOpen = true;
+    state.regionDrawerOpen = false;
+  }
+
+  renderSegments();
+  renderCards();
+  renderDetail();
+  renderRegionDrawer();
+  renderMoreDrawer();
+  renderRelationshipTree();
+}
+
 function render() {
   renderReaderState();
   renderSegments();
@@ -2567,8 +2596,24 @@ els.relationshipTree.addEventListener("click", (event) => {
   if (!character) {
     return;
   }
-  state.selectedRelationshipCharacterId = character.dataset.characterId;
-  renderRelationshipTree();
+
+  clearTimeout(relationshipClickTimer);
+  relationshipClickTimer = setTimeout(() => {
+    openCharacterPanelFromTree(character.dataset.characterId);
+    relationshipClickTimer = null;
+  }, 220);
+});
+
+els.relationshipTree.addEventListener("dblclick", (event) => {
+  const character = event.target.closest("[data-character-id]");
+  if (!character) {
+    return;
+  }
+
+  event.preventDefault();
+  clearTimeout(relationshipClickTimer);
+  relationshipClickTimer = null;
+  openCharacterPanelFromTree(character.dataset.characterId, true);
 });
 
 els.relationshipTree.addEventListener("change", (event) => {
@@ -2586,8 +2631,7 @@ els.relationshipTree.addEventListener("keydown", (event) => {
     return;
   }
   event.preventDefault();
-  state.selectedRelationshipCharacterId = character.dataset.characterId;
-  renderRelationshipTree();
+  openCharacterPanelFromTree(character.dataset.characterId);
 });
 
 els.relationshipTree.addEventListener("wheel", (event) => {
