@@ -1,3 +1,5 @@
+const siteSeed = window.stormlightSiteSeed || {};
+
 const works = [
   {
     key: "none",
@@ -202,7 +204,7 @@ function currentPositionCopy(position) {
   return `Entries through chapter ${normalized.chapter} of ${work.label} are visible.`;
 }
 
-const entries = [
+let entries = [
   {
     id: "roshar",
     category: "world",
@@ -339,6 +341,8 @@ const entries = [
     tags: ["Travel", "Ancient", "Infrastructure"]
   }
 ];
+
+entries = mergeSeedEntries(entries, siteSeed.entries);
 
 const moreDetails = {
   roshar: {
@@ -478,7 +482,9 @@ const moreDetails = {
   }
 };
 
-const timelineEvents = [
+mergeSeedDetails(moreDetails, siteSeed.moreDetails);
+
+let timelineEvents = [
   {
     id: "event-prelude",
     threshold: gate("twok", 0),
@@ -568,6 +574,8 @@ const timelineEvents = [
     tags: ["Book five", "Placeholder"]
   }
 ];
+
+timelineEvents = mergeSeedTimelineEvents(timelineEvents, siteSeed.timelineEvents);
 
 const worldRegions = [
   {
@@ -1574,6 +1582,52 @@ function categoryLabel(category) {
     timeline: "Timeline"
   };
   return labels[category] || "Entry";
+}
+
+function mergeSeedEntries(baseEntries, seedEntries = []) {
+  if (!Array.isArray(seedEntries)) {
+    return baseEntries;
+  }
+
+  const ids = new Set(baseEntries.map((entry) => entry.id));
+  const merged = [...baseEntries];
+
+  seedEntries.forEach((entry) => {
+    if (!entry?.id || ids.has(entry.id)) {
+      return;
+    }
+
+    ids.add(entry.id);
+    merged.push(entry);
+  });
+
+  return merged;
+}
+
+function mergeSeedDetails(target, seedDetails = {}) {
+  Object.entries(seedDetails || {}).forEach(([id, detail]) => {
+    if (!id || target[id]) {
+      return;
+    }
+
+    target[id] = detail;
+  });
+}
+
+function mergeSeedTimelineEvents(baseEvents, seedEvents = []) {
+  if (!Array.isArray(seedEvents)) {
+    return baseEvents;
+  }
+
+  return mergeSeedEntries(baseEvents, seedEvents)
+    .sort((a, b) => {
+      const thresholdDelta = positionScore(a.threshold) - positionScore(b.threshold);
+      if (thresholdDelta !== 0) {
+        return thresholdDelta;
+      }
+
+      return a.title.localeCompare(b.title);
+    });
 }
 
 function characterEntryFromRelationship(character) {
