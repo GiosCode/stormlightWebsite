@@ -1584,6 +1584,23 @@ function categoryLabel(category) {
   return labels[category] || "Entry";
 }
 
+function relationshipCharacterSections(character) {
+  return [
+    {
+      title: "Background",
+      body: `${character.name} is tracked as ${character.role.toLowerCase()} connected to ${character.origin}.`
+    },
+    {
+      title: "Story role",
+      body: "This generated character entry gives enough context to understand the relationship tree while keeping chapter-sensitive details hidden."
+    },
+    {
+      title: "Reader note",
+      body: `More specific context stays protected until ${thresholdSentence(character.threshold)}.`
+    }
+  ];
+}
+
 function mergeSeedEntries(baseEntries, seedEntries = []) {
   if (!Array.isArray(seedEntries)) {
     return baseEntries;
@@ -1636,10 +1653,11 @@ function characterEntryFromRelationship(character) {
     category: "characters",
     threshold: character.threshold,
     title: character.name,
-    summary: `${character.role} connected to ${character.origin}.`,
-    body: `${character.name} appears in the relationship tree as ${character.role.toLowerCase()} from ${character.origin}. Details stay intentionally brief so this entry remains safe at the selected chapter threshold.`,
+    summary: `${character.name} is ${character.role.toLowerCase()} connected to ${character.origin}.`,
+    body: `${character.name} appears in the relationship tree as ${character.role.toLowerCase()} from ${character.origin}. This entry focuses on safe role and relationship context.`,
     tags: ["Character", character.origin, character.role, character.minor ? "Minor" : "Major"].filter(Boolean),
     minor: Boolean(character.minor),
+    sections: relationshipCharacterSections(character),
     generatedFromRelationship: true
   };
 }
@@ -2478,8 +2496,9 @@ function renderMoreDrawer() {
     return;
   }
 
-  const sections = detail?.sections?.map((section) => renderMoreSection(section.title, section.body)).join("")
-    || (item.generatedFromRelationship ? renderMoreSection("Relationship tree", item.body) : "");
+  const sections = (detail?.sections || item.sections || [])
+    .map((section) => renderMoreSection(section.title, section.body))
+    .join("");
   const source = detail?.sourceUrl
     ? `<a class="source-link" href="${detail.sourceUrl}" target="_blank" rel="noopener noreferrer">Coppermind topic page</a>`
     : "";
