@@ -705,9 +705,9 @@ h1 {
 
 .relationship-canvas {
   position: relative;
-  width: 1160px;
-  min-width: 1160px;
-  height: 720px;
+  width: 1280px;
+  min-width: 1280px;
+  height: 880px;
   margin: 0 auto;
 }
 
@@ -1418,9 +1418,9 @@ h1 {
   }
 
   .relationship-canvas {
-    width: 1160px;
-    min-width: 1160px;
-    height: 720px;
+    width: 1280px;
+    min-width: 1280px;
+    height: 880px;
   }
 
   .relationship-node {

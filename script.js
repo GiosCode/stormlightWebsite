@@ -777,7 +777,7 @@ const relationshipCharacters = [
     tone: "storm",
     threshold: gate("twok", 7),
     x: 12,
-    y: 17,
+    y: 12,
     portrait: { skin: "#a87355", hair: "#1f1a18", coat: "#35535a", accent: "#88a86b" }
   },
   {
@@ -788,7 +788,7 @@ const relationshipCharacters = [
     tone: "storm",
     threshold: gate("twok", 14),
     x: 12,
-    y: 83,
+    y: 88,
     portrait: { skin: "#9a684d", hair: "#2e2925", coat: "#33434a", accent: "#4fb7c5" }
   },
   {
@@ -798,8 +798,8 @@ const relationshipCharacters = [
     origin: "Jah Keved",
     tone: "amber",
     threshold: gate("twok", 3),
-    x: 35,
-    y: 17,
+    x: 34,
+    y: 12,
     portrait: { skin: "#d9b29a", hair: "#9c3d2f", coat: "#604354", accent: "#f0a648" }
   },
   {
@@ -810,7 +810,7 @@ const relationshipCharacters = [
     tone: "storm",
     threshold: gate("twok", 3),
     x: 58,
-    y: 17,
+    y: 12,
     portrait: { skin: "#9f6b4d", hair: "#121212", coat: "#222b38", accent: "#ad82ff" }
   },
   {
@@ -831,8 +831,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 12),
-    x: 82,
-    y: 42,
+    x: 86,
+    y: 38,
     portrait: { skin: "#a96f4f", hair: "#c8a14c", coat: "#2d4059", accent: "#4fb7c5" }
   },
   {
@@ -842,8 +842,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 18),
-    x: 82,
-    y: 72,
+    x: 86,
+    y: 88,
     portrait: { skin: "#a06a4e", hair: "#45362c", coat: "#263240", accent: "#88a86b" }
   },
   {
@@ -853,8 +853,8 @@ const relationshipCharacters = [
     origin: "Shinovar",
     tone: "leaf",
     threshold: gate("twok", 0),
-    x: 84,
-    y: 17,
+    x: 86,
+    y: 12,
     portrait: { skin: "#d7c4ae", hair: "#f0f0e9", coat: "#5b6659", accent: "#88a86b" }
   },
   {
@@ -864,8 +864,8 @@ const relationshipCharacters = [
     origin: "Makabak",
     tone: "amber",
     threshold: gate("edgedancer", 1),
-    x: 35,
-    y: 78,
+    x: 34,
+    y: 88,
     portrait: { skin: "#8f5b3e", hair: "#2b201b", coat: "#4d5130", accent: "#f0a648" }
   },
   {
@@ -876,7 +876,7 @@ const relationshipCharacters = [
     tone: "violet",
     threshold: gate("ob", 1),
     x: 58,
-    y: 83,
+    y: 88,
     portrait: { skin: "#8b6a75", hair: "#3b2a31", coat: "#4c384f", accent: "#ad82ff" }
   }
 ];
@@ -890,12 +890,12 @@ const relationshipLinks = [
   { id: "dalinar-renarin", from: "dalinar", to: "renarin", type: "family", label: "father / son", threshold: gate("twok", 18) },
   { id: "adolin-shallan", from: "adolin", to: "shallan", type: "court", label: "courtship", threshold: gate("wor", 12) },
   { id: "szeth-dalinar", from: "szeth", to: "dalinar", type: "conflict", label: "enemies", threshold: gate("twok", 75) },
-  { id: "lift-venli", from: "lift", to: "venli", type: "spoiler", label: "later arc proximity", threshold: gate("row", 1) }
+  { id: "lift-venli", from: "lift", to: "venli", type: "spoiler", label: "later arcs", threshold: gate("row", 1) }
 ];
 
 const RELATIONSHIP_CANVAS = {
-  width: 1160,
-  height: 720
+  width: 1280,
+  height: 880
 };
 
 const state = {
@@ -1260,9 +1260,9 @@ function relationshipPoint(character) {
   };
 }
 
-function readablePerpendicularAngle(from, to) {
+function readableParallelAngle(from, to) {
   const lineAngle = Math.atan2(to.y - from.y, to.x - from.x) * (180 / Math.PI);
-  let angle = lineAngle + 90;
+  let angle = lineAngle;
 
   while (angle > 90) {
     angle -= 180;
@@ -1279,7 +1279,7 @@ function relationshipLabelLayout(from, to, label) {
   return {
     x: (from.x + to.x) / 2,
     y: (from.y + to.y) / 2,
-    angle: readablePerpendicularAngle(from, to),
+    angle: readableParallelAngle(from, to),
     width: Math.min(190, Math.max(82, label.length * 8 + 34))
   };
 }
