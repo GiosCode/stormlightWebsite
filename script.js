@@ -759,15 +759,125 @@ const worldRegions = [
 
 const relationshipCharacters = [
   {
+    id: "kalak",
+    name: "Kalak",
+    role: "Herald",
+    origin: "Ancient Roshar",
+    tone: "violet",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 4,
+    minor: true
+  },
+  {
+    id: "jezrien",
+    name: "Jezrien",
+    role: "Herald",
+    origin: "Ancient Roshar",
+    tone: "violet",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 12,
+    minor: true
+  },
+  {
+    id: "taln",
+    name: "Talenel",
+    role: "Herald",
+    origin: "Ancient Roshar",
+    tone: "violet",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 20,
+    minor: true
+  },
+  {
+    id: "ishar",
+    name: "Ishar",
+    role: "Herald",
+    origin: "Ancient Roshar",
+    tone: "violet",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 28,
+    minor: true
+  },
+  {
+    id: "szeth",
+    name: "Szeth",
+    role: "Shin",
+    origin: "Shinovar",
+    tone: "leaf",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 38,
+    portrait: { skin: "#d7c4ae", hair: "#f0f0e9", coat: "#5b6659", accent: "#88a86b" }
+  },
+  {
+    id: "gavilar",
+    name: "Gavilar",
+    role: "King",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 50,
+    portrait: { skin: "#9e6748", hair: "#2a2521", coat: "#273b50", accent: "#f0a648" }
+  },
+  {
+    id: "thaidakar",
+    name: "Thaidakar",
+    role: "Mentioned figure",
+    origin: "Unknown",
+    tone: "violet",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 62,
+    minor: true
+  },
+  {
+    id: "restares",
+    name: "Restares",
+    role: "Mentioned figure",
+    origin: "Unknown",
+    tone: "violet",
+    threshold: gate("twok", 0),
+    x: 8,
+    y: 72,
+    minor: true
+  },
+  {
     id: "kaladin",
     name: "Kaladin",
     role: "Soldier",
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 1),
-    x: 12,
-    y: 50,
+    x: 22,
+    y: 36,
     portrait: { skin: "#9f6b4d", hair: "#171717", coat: "#263f45", accent: "#4fb7c5" }
+  },
+  {
+    id: "lirin",
+    name: "Lirin",
+    role: "Surgeon",
+    origin: "Hearthstone",
+    tone: "storm",
+    threshold: gate("twok", 7),
+    x: 22,
+    y: 5,
+    portrait: { skin: "#a16b50", hair: "#27211d", coat: "#33424a", accent: "#88a86b" }
+  },
+  {
+    id: "hesina",
+    name: "Hesina",
+    role: "Kaladin's mother",
+    origin: "Hearthstone",
+    tone: "storm",
+    threshold: gate("twok", 7),
+    x: 22,
+    y: 15,
+    portrait: { skin: "#a87558", hair: "#2f2621", coat: "#4b3e4d", accent: "#ad82ff" }
   },
   {
     id: "tien",
@@ -776,9 +886,130 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 7),
-    x: 12,
-    y: 12,
+    x: 22,
+    y: 25,
     portrait: { skin: "#a87355", hair: "#1f1a18", coat: "#35535a", accent: "#88a86b" }
+  },
+  {
+    id: "laral",
+    name: "Laral",
+    role: "Hearthstone lighteyes",
+    origin: "Hearthstone",
+    tone: "storm",
+    threshold: gate("twok", 7),
+    x: 8,
+    y: 30,
+    minor: true
+  },
+  {
+    id: "wistiow",
+    name: "Wistiow",
+    role: "Citylord",
+    origin: "Hearthstone",
+    tone: "storm",
+    threshold: gate("twok", 7),
+    x: 14,
+    y: 43,
+    minor: true
+  },
+  {
+    id: "roshone",
+    name: "Roshone",
+    role: "Lighteyes",
+    origin: "Hearthstone",
+    tone: "storm",
+    threshold: gate("twok", 10),
+    x: 14,
+    y: 55,
+    minor: true
+  },
+  {
+    id: "syl",
+    name: "Syl",
+    role: "Spren",
+    origin: "Roshar",
+    tone: "leaf",
+    threshold: gate("twok", 2),
+    x: 22,
+    y: 68,
+    portrait: { skin: "#bdebf0", hair: "#eefcff", coat: "#5d9daa", accent: "#4fb7c5" }
+  },
+  {
+    id: "cenn",
+    name: "Cenn",
+    role: "Spearman",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 1),
+    x: 36,
+    y: 5,
+    minor: true
+  },
+  {
+    id: "dallet",
+    name: "Dallet",
+    role: "Squadleader",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 1),
+    x: 36,
+    y: 12,
+    minor: true
+  },
+  {
+    id: "amaram",
+    name: "Amaram",
+    role: "Brightlord",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 1),
+    x: 36,
+    y: 19,
+    minor: true
+  },
+  {
+    id: "tvlakv",
+    name: "Tvlakv",
+    role: "Slave merchant",
+    origin: "Roshar",
+    tone: "amber",
+    threshold: gate("twok", 2),
+    x: 36,
+    y: 26,
+    minor: true
+  },
+  {
+    id: "bluth",
+    name: "Bluth",
+    role: "Guard",
+    origin: "Roshar",
+    tone: "amber",
+    threshold: gate("twok", 2),
+    x: 36,
+    y: 33,
+    minor: true
+  },
+  {
+    id: "gaz",
+    name: "Gaz",
+    role: "Bridge sergeant",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 4),
+    x: 36,
+    y: 42,
+    minor: true
+  },
+  {
+    id: "lamaril",
+    name: "Lamaril",
+    role: "Bridgeman officer",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 4),
+    x: 50,
+    y: 49,
+    minor: true
   },
   {
     id: "teft",
@@ -786,10 +1017,120 @@ const relationshipCharacters = [
     role: "Bridge Four",
     origin: "Alethkar",
     tone: "storm",
-    threshold: gate("twok", 14),
-    x: 12,
-    y: 88,
+    threshold: gate("twok", 9),
+    x: 36,
+    y: 54,
     portrait: { skin: "#9a684d", hair: "#2e2925", coat: "#33434a", accent: "#4fb7c5" }
+  },
+  {
+    id: "moash",
+    name: "Moash",
+    role: "Bridgeman",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 9),
+    x: 36,
+    y: 61,
+    portrait: { skin: "#9f6748", hair: "#211a17", coat: "#2d3e46", accent: "#4fb7c5" }
+  },
+  {
+    id: "rock",
+    name: "Rock",
+    role: "Bridgeman",
+    origin: "Horneater Peaks",
+    tone: "amber",
+    threshold: gate("twok", 9),
+    x: 36,
+    y: 68,
+    portrait: { skin: "#b06d48", hair: "#9b372c", coat: "#41533c", accent: "#f0a648" }
+  },
+  {
+    id: "maps",
+    name: "Maps",
+    role: "Bridgeman",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 9),
+    x: 36,
+    y: 75,
+    minor: true
+  },
+  {
+    id: "dunny",
+    name: "Dunny",
+    role: "Bridgeman",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 9),
+    x: 36,
+    y: 82,
+    minor: true
+  },
+  {
+    id: "skar",
+    name: "Skar",
+    role: "Bridgeman",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 9),
+    x: 36,
+    y: 89,
+    minor: true
+  },
+  {
+    id: "leyten",
+    name: "Leyten",
+    role: "Bridgeman",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 9),
+    x: 36,
+    y: 96,
+    minor: true
+  },
+  {
+    id: "hobber",
+    name: "Hobber",
+    role: "Bridgeman",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 9),
+    x: 50,
+    y: 96,
+    minor: true
+  },
+  {
+    id: "yalb",
+    name: "Yalb",
+    role: "Sailor",
+    origin: "Roshar",
+    tone: "amber",
+    threshold: gate("twok", 3),
+    x: 50,
+    y: 5,
+    minor: true
+  },
+  {
+    id: "tozbek",
+    name: "Tozbek",
+    role: "Captain",
+    origin: "Roshar",
+    tone: "amber",
+    threshold: gate("twok", 3),
+    x: 50,
+    y: 12,
+    minor: true
+  },
+  {
+    id: "kabsal",
+    name: "Kabsal",
+    role: "Ardent",
+    origin: "Kharbranth",
+    tone: "leaf",
+    threshold: gate("twok", 5),
+    x: 47,
+    y: 19,
+    minor: true
   },
   {
     id: "shallan",
@@ -798,9 +1139,64 @@ const relationshipCharacters = [
     origin: "Jah Keved",
     tone: "amber",
     threshold: gate("twok", 3),
-    x: 34,
-    y: 12,
+    x: 50,
+    y: 33,
     portrait: { skin: "#d9b29a", hair: "#9c3d2f", coat: "#604354", accent: "#f0a648" }
+  },
+  {
+    id: "balat",
+    name: "Nan Balat",
+    role: "Shallan's brother",
+    origin: "Jah Keved",
+    tone: "amber",
+    threshold: gate("twok", 3),
+    x: 50,
+    y: 47,
+    minor: true
+  },
+  {
+    id: "wikim",
+    name: "Wikim",
+    role: "Shallan's brother",
+    origin: "Jah Keved",
+    tone: "amber",
+    threshold: gate("twok", 3),
+    x: 50,
+    y: 54,
+    minor: true
+  },
+  {
+    id: "jushu",
+    name: "Jushu",
+    role: "Shallan's brother",
+    origin: "Jah Keved",
+    tone: "amber",
+    threshold: gate("twok", 3),
+    x: 50,
+    y: 61,
+    minor: true
+  },
+  {
+    id: "helaran",
+    name: "Helaran",
+    role: "Shallan's brother",
+    origin: "Jah Keved",
+    tone: "amber",
+    threshold: gate("twok", 3),
+    x: 50,
+    y: 68,
+    minor: true
+  },
+  {
+    id: "taravangian",
+    name: "Taravangian",
+    role: "King",
+    origin: "Kharbranth",
+    tone: "leaf",
+    threshold: gate("twok", 5),
+    x: 64,
+    y: 5,
+    minor: true
   },
   {
     id: "jasnah",
@@ -809,9 +1205,31 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 3),
-    x: 58,
-    y: 12,
+    x: 64,
+    y: 19,
     portrait: { skin: "#9f6b4d", hair: "#121212", coat: "#222b38", accent: "#ad82ff" }
+  },
+  {
+    id: "navani",
+    name: "Navani",
+    role: "Scholar",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 12),
+    x: 85,
+    y: 19,
+    portrait: { skin: "#9f6b4d", hair: "#1c1715", coat: "#3b3344", accent: "#ad82ff" }
+  },
+  {
+    id: "elhokar",
+    name: "Elhokar",
+    role: "King",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 12),
+    x: 85,
+    y: 33,
+    portrait: { skin: "#a86b4f", hair: "#241c18", coat: "#28394e", accent: "#f0a648" }
   },
   {
     id: "dalinar",
@@ -820,8 +1238,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 12),
-    x: 58,
-    y: 50,
+    x: 64,
+    y: 42,
     portrait: { skin: "#966249", hair: "#1f1f1f", coat: "#253746", accent: "#f0a648" }
   },
   {
@@ -831,8 +1249,8 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 12),
-    x: 86,
-    y: 38,
+    x: 85,
+    y: 47,
     portrait: { skin: "#a96f4f", hair: "#c8a14c", coat: "#2d4059", accent: "#4fb7c5" }
   },
   {
@@ -842,20 +1260,108 @@ const relationshipCharacters = [
     origin: "Alethkar",
     tone: "storm",
     threshold: gate("twok", 18),
-    x: 86,
-    y: 88,
+    x: 85,
+    y: 61,
     portrait: { skin: "#a06a4e", hair: "#45362c", coat: "#263240", accent: "#88a86b" }
   },
   {
-    id: "szeth",
-    name: "Szeth",
-    role: "Shin",
-    origin: "Shinovar",
+    id: "sadeas",
+    name: "Sadeas",
+    role: "Highprince",
+    origin: "Alethkar",
+    tone: "storm",
+    threshold: gate("twok", 12),
+    x: 85,
+    y: 75,
+    portrait: { skin: "#9e6348", hair: "#2b201c", coat: "#4c2d2f", accent: "#ef7564" }
+  },
+  {
+    id: "wit",
+    name: "Wit",
+    role: "King's Wit",
+    origin: "Alethkar",
+    tone: "violet",
+    threshold: gate("twok", 12),
+    x: 85,
+    y: 85,
+    minor: true
+  },
+  {
+    id: "gallant",
+    name: "Gallant",
+    role: "Ryshadium",
+    origin: "Alethkar",
     tone: "leaf",
-    threshold: gate("twok", 0),
-    x: 86,
+    threshold: gate("twok", 12),
+    x: 85,
+    y: 95,
+    minor: true
+  },
+  {
+    id: "ishikk",
+    name: "Ishikk",
+    role: "Fisherman",
+    origin: "Purelake",
+    tone: "leaf",
+    threshold: gate("twok", 11),
+    x: 78,
+    y: 5,
+    minor: true
+  },
+  {
+    id: "rysn",
+    name: "Rysn",
+    role: "Trader",
+    origin: "Thaylenah",
+    tone: "amber",
+    threshold: gate("twok", 11),
+    x: 78,
     y: 12,
-    portrait: { skin: "#d7c4ae", hair: "#f0f0e9", coat: "#5b6659", accent: "#88a86b" }
+    minor: true
+  },
+  {
+    id: "vstim",
+    name: "Vstim",
+    role: "Babsk",
+    origin: "Thaylenah",
+    tone: "amber",
+    threshold: gate("twok", 11),
+    x: 78,
+    y: 19,
+    minor: true
+  },
+  {
+    id: "axies",
+    name: "Axies",
+    role: "Aimian",
+    origin: "Aimia",
+    tone: "leaf",
+    threshold: gate("twok", 23),
+    x: 78,
+    y: 33,
+    minor: true
+  },
+  {
+    id: "baxil",
+    name: "Baxil",
+    role: "Thief",
+    origin: "Roshar",
+    tone: "amber",
+    threshold: gate("twok", 42),
+    x: 78,
+    y: 40,
+    minor: true
+  },
+  {
+    id: "geranid",
+    name: "Geranid",
+    role: "Scholar",
+    origin: "Roshar",
+    tone: "leaf",
+    threshold: gate("twok", 57),
+    x: 78,
+    y: 47,
+    minor: true
   },
   {
     id: "lift",
@@ -864,8 +1370,8 @@ const relationshipCharacters = [
     origin: "Makabak",
     tone: "amber",
     threshold: gate("edgedancer", 1),
-    x: 34,
-    y: 88,
+    x: 92,
+    y: 82,
     portrait: { skin: "#8f5b3e", hair: "#2b201b", coat: "#4d5130", accent: "#f0a648" }
   },
   {
@@ -875,27 +1381,78 @@ const relationshipCharacters = [
     origin: "Shattered Plains",
     tone: "violet",
     threshold: gate("ob", 1),
-    x: 58,
-    y: 88,
+    x: 72,
+    y: 89,
     portrait: { skin: "#8b6a75", hair: "#3b2a31", coat: "#4c384f", accent: "#ad82ff" }
   }
 ];
 
 const relationshipLinks = [
+  { id: "kalak-jezrien", from: "kalak", to: "jezrien", type: "spoiler", label: "Heralds", threshold: gate("twok", 0) },
+  { id: "jezrien-taln", from: "jezrien", to: "taln", type: "spoiler", label: "Heralds", threshold: gate("twok", 0) },
+  { id: "jezrien-ishar", from: "jezrien", to: "ishar", type: "spoiler", label: "Heralds", threshold: gate("twok", 0) },
+  { id: "szeth-gavilar", from: "szeth", to: "gavilar", type: "conflict", label: "assassin / target", threshold: gate("twok", 0) },
+  { id: "gavilar-dalinar", from: "gavilar", to: "dalinar", type: "family", label: "brothers", threshold: gate("twok", 12) },
+  { id: "gavilar-elhokar", from: "gavilar", to: "elhokar", type: "family", label: "father / son", threshold: gate("twok", 12) },
+  { id: "gavilar-jasnah", from: "gavilar", to: "jasnah", type: "family", label: "father / daughter", threshold: gate("twok", 3) },
+  { id: "gavilar-navani", from: "gavilar", to: "navani", type: "family", label: "husband / wife", threshold: gate("twok", 12) },
+  { id: "lirin-hesina", from: "lirin", to: "hesina", type: "family", label: "husband / wife", threshold: gate("twok", 7) },
+  { id: "lirin-kaladin", from: "lirin", to: "kaladin", type: "family", label: "father / son", threshold: gate("twok", 7) },
+  { id: "hesina-kaladin", from: "hesina", to: "kaladin", type: "family", label: "mother / son", threshold: gate("twok", 7) },
   { id: "kaladin-tien", from: "kaladin", to: "tien", type: "family", label: "brothers", threshold: gate("twok", 7) },
-  { id: "kaladin-teft", from: "kaladin", to: "teft", type: "crew", label: "comrades", threshold: gate("twok", 14) },
+  { id: "kaladin-laral", from: "kaladin", to: "laral", type: "court", label: "friends", threshold: gate("twok", 7) },
+  { id: "wistiow-laral", from: "wistiow", to: "laral", type: "family", label: "father / daughter", threshold: gate("twok", 7) },
+  { id: "roshone-laral", from: "roshone", to: "laral", type: "court", label: "household tie", threshold: gate("twok", 10) },
+  { id: "kaladin-cenn", from: "kaladin", to: "cenn", type: "crew", label: "squad", threshold: gate("twok", 1) },
+  { id: "kaladin-dallet", from: "kaladin", to: "dallet", type: "crew", label: "squad", threshold: gate("twok", 1) },
+  { id: "kaladin-amaram", from: "kaladin", to: "amaram", type: "court", label: "commander", threshold: gate("twok", 1) },
+  { id: "kaladin-tvlakv", from: "kaladin", to: "tvlakv", type: "conflict", label: "enslaver", threshold: gate("twok", 2) },
+  { id: "tvlakv-bluth", from: "tvlakv", to: "bluth", type: "crew", label: "guard", threshold: gate("twok", 2) },
+  { id: "kaladin-syl", from: "kaladin", to: "syl", type: "mentor", label: "companion", threshold: gate("twok", 2) },
+  { id: "kaladin-gaz", from: "kaladin", to: "gaz", type: "conflict", label: "sergeant", threshold: gate("twok", 4) },
+  { id: "gaz-lamaril", from: "gaz", to: "lamaril", type: "crew", label: "officer", threshold: gate("twok", 4) },
+  { id: "kaladin-teft", from: "kaladin", to: "teft", type: "crew", label: "comrades", threshold: gate("twok", 9) },
+  { id: "kaladin-moash", from: "kaladin", to: "moash", type: "crew", label: "comrades", threshold: gate("twok", 9) },
+  { id: "kaladin-rock", from: "kaladin", to: "rock", type: "crew", label: "comrades", threshold: gate("twok", 9) },
+  { id: "kaladin-maps", from: "kaladin", to: "maps", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-dunny", from: "kaladin", to: "dunny", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-skar", from: "kaladin", to: "skar", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-leyten", from: "kaladin", to: "leyten", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "kaladin-hobber", from: "kaladin", to: "hobber", type: "crew", label: "Bridge Four", threshold: gate("twok", 9) },
+  { id: "shallan-yalb", from: "shallan", to: "yalb", type: "crew", label: "passenger / sailor", threshold: gate("twok", 3) },
+  { id: "yalb-tozbek", from: "yalb", to: "tozbek", type: "crew", label: "crew", threshold: gate("twok", 3) },
   { id: "shallan-jasnah", from: "shallan", to: "jasnah", type: "mentor", label: "mentor / ward", threshold: gate("twok", 3) },
+  { id: "shallan-balat", from: "shallan", to: "balat", type: "family", label: "siblings", threshold: gate("twok", 3) },
+  { id: "shallan-wikim", from: "shallan", to: "wikim", type: "family", label: "siblings", threshold: gate("twok", 3) },
+  { id: "shallan-jushu", from: "shallan", to: "jushu", type: "family", label: "siblings", threshold: gate("twok", 3) },
+  { id: "shallan-helaran", from: "shallan", to: "helaran", type: "family", label: "siblings", threshold: gate("twok", 3) },
+  { id: "shallan-kabsal", from: "shallan", to: "kabsal", type: "mentor", label: "acquaintances", threshold: gate("twok", 5) },
+  { id: "jasnah-kabsal", from: "jasnah", to: "kabsal", type: "mentor", label: "debates", threshold: gate("twok", 5) },
+  { id: "jasnah-taravangian", from: "jasnah", to: "taravangian", type: "court", label: "guest / king", threshold: gate("twok", 5) },
   { id: "jasnah-dalinar", from: "jasnah", to: "dalinar", type: "family", label: "niece / uncle", threshold: gate("twok", 12) },
   { id: "dalinar-adolin", from: "dalinar", to: "adolin", type: "family", label: "father / son", threshold: gate("twok", 12) },
   { id: "dalinar-renarin", from: "dalinar", to: "renarin", type: "family", label: "father / son", threshold: gate("twok", 18) },
+  { id: "dalinar-elhokar", from: "dalinar", to: "elhokar", type: "family", label: "uncle / nephew", threshold: gate("twok", 12) },
+  { id: "elhokar-adolin", from: "elhokar", to: "adolin", type: "family", label: "cousins", threshold: gate("twok", 12) },
+  { id: "dalinar-sadeas", from: "dalinar", to: "sadeas", type: "court", label: "highprinces", threshold: gate("twok", 12) },
+  { id: "elhokar-wit", from: "elhokar", to: "wit", type: "court", label: "king / Wit", threshold: gate("twok", 12) },
+  { id: "dalinar-gallant", from: "dalinar", to: "gallant", type: "crew", label: "rider / mount", threshold: gate("twok", 12) },
+  { id: "rysn-vstim", from: "rysn", to: "vstim", type: "mentor", label: "babsk", threshold: gate("twok", 11) },
   { id: "adolin-shallan", from: "adolin", to: "shallan", type: "court", label: "courtship", threshold: gate("wor", 12) },
   { id: "szeth-dalinar", from: "szeth", to: "dalinar", type: "conflict", label: "enemies", threshold: gate("twok", 75) },
   { id: "lift-venli", from: "lift", to: "venli", type: "spoiler", label: "later arcs", threshold: gate("row", 1) }
 ];
 
 const RELATIONSHIP_CANVAS = {
-  width: 1280,
-  height: 880
+  width: 1680,
+  height: 4000
+};
+
+const RELATIONSHIP_LAYOUT = {
+  marginX: 140,
+  marginY: 150,
+  columnGap: 340,
+  rowGap: 410
 };
 
 const RELATIONSHIP_ZOOM = {
@@ -917,6 +1474,7 @@ const state = {
   moreDrawerOpen: false,
   selectedRelationshipCharacterId: null,
   relationshipZoom: RELATIONSHIP_ZOOM.default,
+  showMinorCharacters: true,
   timelineIndex: 0,
   revealed: new Set()
 };
@@ -972,6 +1530,7 @@ const els = {
 
 let pendingRevealId = null;
 let relationshipPinch = null;
+let relationshipCanvas = { ...RELATIONSHIP_CANVAS };
 
 function isUnlocked(item) {
   return positionScore(item.threshold) <= positionScore(state.position) || state.revealed.has(item.id);
@@ -1256,17 +1815,62 @@ function relationshipCharacterById(id) {
   return relationshipCharacters.find((character) => character.id === id);
 }
 
+function relationshipCharactersForView() {
+  return relationshipCharacters.filter((character) => state.showMinorCharacters || !character.minor);
+}
+
+function buildRelationshipLayout(characters) {
+  const columns = new Map();
+
+  characters.forEach((character) => {
+    const key = character.x;
+    if (!columns.has(key)) {
+      columns.set(key, []);
+    }
+    columns.get(key).push(character);
+  });
+
+  const columnKeys = [...columns.keys()].sort((a, b) => a - b);
+  const maxRows = Math.max(1, ...columnKeys.map((key) => columns.get(key).length));
+  const width = Math.max(
+    RELATIONSHIP_CANVAS.width,
+    (RELATIONSHIP_LAYOUT.marginX * 2) + ((columnKeys.length - 1) * RELATIONSHIP_LAYOUT.columnGap)
+  );
+  const height = Math.max(
+    RELATIONSHIP_CANVAS.height,
+    (RELATIONSHIP_LAYOUT.marginY * 2) + ((maxRows - 1) * RELATIONSHIP_LAYOUT.rowGap)
+  );
+  const positions = new Map();
+
+  columnKeys.forEach((key, columnIndex) => {
+    const columnCharacters = columns.get(key).sort((a, b) => a.y - b.y);
+    const x = RELATIONSHIP_LAYOUT.marginX + (columnIndex * RELATIONSHIP_LAYOUT.columnGap);
+
+    columnCharacters.forEach((character, rowIndex) => {
+      positions.set(character.id, {
+        x,
+        y: RELATIONSHIP_LAYOUT.marginY + (rowIndex * RELATIONSHIP_LAYOUT.rowGap)
+      });
+    });
+  });
+
+  return {
+    width,
+    height,
+    positions,
+    characters,
+    characterIds: new Set(characters.map((character) => character.id))
+  };
+}
+
 function isRelationshipVisible(link) {
   const from = relationshipCharacterById(link.from);
   const to = relationshipCharacterById(link.to);
   return Boolean(from && to && isUnlocked(from) && isUnlocked(to) && isUnlocked(link));
 }
 
-function relationshipPoint(character) {
-  return {
-    x: (character.x / 100) * RELATIONSHIP_CANVAS.width,
-    y: (character.y / 100) * RELATIONSHIP_CANVAS.height
-  };
+function relationshipPoint(character, layout) {
+  return layout.positions.get(character.id);
 }
 
 function readableParallelAngle(from, to) {
@@ -1312,11 +1916,14 @@ function applyRelationshipZoom() {
   const zoomIn = els.relationshipTree.querySelector("[data-relationship-zoom='in']");
 
   if (viewport) {
-    viewport.style.width = `${RELATIONSHIP_CANVAS.width * zoom}px`;
-    viewport.style.height = `${RELATIONSHIP_CANVAS.height * zoom}px`;
+    viewport.style.width = `${relationshipCanvas.width * zoom}px`;
+    viewport.style.height = `${relationshipCanvas.height * zoom}px`;
   }
 
   if (canvas) {
+    canvas.style.width = `${relationshipCanvas.width}px`;
+    canvas.style.minWidth = `${relationshipCanvas.width}px`;
+    canvas.style.height = `${relationshipCanvas.height}px`;
     canvas.style.setProperty("--relationship-zoom", zoom);
   }
 
@@ -1385,6 +1992,17 @@ function centerBetweenTouches(touches) {
   };
 }
 
+function portraitFor(character) {
+  const defaults = {
+    storm: { skin: "#9f6b4d", hair: "#211c19", coat: "#283944", accent: "#4fb7c5" },
+    amber: { skin: "#c58c69", hair: "#5b2e25", coat: "#4d3d35", accent: "#f0a648" },
+    leaf: { skin: "#b89672", hair: "#4a3a2d", coat: "#3f4d3b", accent: "#88a86b" },
+    violet: { skin: "#a9848f", hair: "#2a2229", coat: "#40344d", accent: "#ad82ff" }
+  };
+
+  return character.portrait || defaults[character.tone] || defaults.storm;
+}
+
 function renderPortrait(character, unlocked) {
   if (!unlocked) {
     return `
@@ -1396,9 +2014,11 @@ function renderPortrait(character, unlocked) {
     `;
   }
 
+  const portrait = portraitFor(character);
+
   return `
     <svg class="portrait-svg" viewBox="0 0 80 80" aria-hidden="true"
-      style="--skin: ${character.portrait.skin}; --hair: ${character.portrait.hair}; --coat: ${character.portrait.coat}; --accent: ${character.portrait.accent};">
+      style="--skin: ${portrait.skin}; --hair: ${portrait.hair}; --coat: ${portrait.coat}; --accent: ${portrait.accent};">
       <rect class="portrait-bg" x="4" y="4" width="72" height="72" rx="18"></rect>
       <path class="portrait-body" d="M16 74 C20 54 60 54 64 74 Z"></path>
       <circle class="portrait-face" cx="40" cy="32" r="15"></circle>
@@ -1412,7 +2032,14 @@ function renderRelationshipTree() {
   const previousScrollPane = relationshipScrollPane();
   const scrollLeft = previousScrollPane?.scrollLeft || 0;
   const scrollTop = previousScrollPane?.scrollTop || 0;
-  const links = relationshipLinks.map((link) => {
+  const viewCharacters = relationshipCharactersForView();
+  const layout = buildRelationshipLayout(viewCharacters);
+  relationshipCanvas = {
+    width: layout.width,
+    height: layout.height
+  };
+  const viewLinks = relationshipLinks.filter((link) => layout.characterIds.has(link.from) && layout.characterIds.has(link.to));
+  const links = viewLinks.map((link) => {
     const from = relationshipCharacterById(link.from);
     const to = relationshipCharacterById(link.to);
     if (!from || !to) {
@@ -1426,8 +2053,8 @@ function renderRelationshipTree() {
     ].join(" ");
     const label = visible ? link.label : "Protected";
     const title = visible ? link.label : "Protected relationship";
-    const fromPoint = relationshipPoint(from);
-    const toPoint = relationshipPoint(to);
+    const fromPoint = relationshipPoint(from, layout);
+    const toPoint = relationshipPoint(to, layout);
 
     return `
       <line class="${classes}" x1="${fromPoint.x}" y1="${fromPoint.y}" x2="${toPoint.x}" y2="${toPoint.y}">
@@ -1436,7 +2063,7 @@ function renderRelationshipTree() {
     `;
   }).join("");
 
-  const labels = relationshipLinks.map((link) => {
+  const labels = viewLinks.map((link) => {
     const from = relationshipCharacterById(link.from);
     const to = relationshipCharacterById(link.to);
     if (!from || !to) {
@@ -1445,28 +2072,30 @@ function renderRelationshipTree() {
 
     const visible = isRelationshipVisible(link);
     const label = visible ? link.label : "Protected";
-    const fromPoint = relationshipPoint(from);
-    const toPoint = relationshipPoint(to);
-    const layout = relationshipLabelLayout(fromPoint, toPoint, label);
+    const fromPoint = relationshipPoint(from, layout);
+    const toPoint = relationshipPoint(to, layout);
+    const labelLayout = relationshipLabelLayout(fromPoint, toPoint, label);
     const classes = [
       "relationship-label",
       visible ? `type-${link.type}` : "is-locked"
     ].join(" ");
 
     return `
-      <g class="${classes}" transform="translate(${layout.x} ${layout.y}) rotate(${layout.angle})">
-        <rect x="${layout.width / -2}" y="-15" width="${layout.width}" height="30" rx="15"></rect>
+      <g class="${classes}" transform="translate(${labelLayout.x} ${labelLayout.y}) rotate(${labelLayout.angle})">
+        <rect x="${labelLayout.width / -2}" y="-15" width="${labelLayout.width}" height="30" rx="15"></rect>
         <text y="0">${label}</text>
       </g>
     `;
   }).join("");
 
-  const nodes = relationshipCharacters.map((character) => {
+  const nodes = viewCharacters.map((character) => {
     const unlocked = isUnlocked(character);
     const active = character.id === state.selectedRelationshipCharacterId;
+    const point = relationshipPoint(character, layout);
     const classes = [
       "relationship-node",
       unlocked ? `origin-${character.tone}` : "is-locked",
+      character.minor ? "is-minor" : "",
       active ? "is-active" : ""
     ].join(" ");
     const name = unlocked ? character.name : "Locked character";
@@ -1474,7 +2103,7 @@ function renderRelationshipTree() {
     const origin = unlocked ? character.origin : "Protected";
 
     return `
-      <article class="${classes}" style="left: ${character.x}%; top: ${character.y}%;" data-character-id="${character.id}" role="button" tabindex="0" aria-label="Bring ${name} to front">
+      <article class="${classes}" style="left: ${point.x}px; top: ${point.y}px;" data-character-id="${character.id}" role="button" tabindex="0" aria-label="Bring ${name} to front">
         <div class="portrait-frame">${renderPortrait(character, unlocked)}</div>
         <h3>${name}</h3>
         <p>${role}</p>
@@ -1485,6 +2114,10 @@ function renderRelationshipTree() {
 
   els.relationshipTree.innerHTML = `
     <div class="relationship-zoom-controls" aria-label="Relationship tree zoom controls">
+      <label class="relationship-minor-toggle">
+        <input type="checkbox" data-relationship-minors ${state.showMinorCharacters ? "checked" : ""}>
+        <span>Minor</span>
+      </label>
       <button type="button" data-relationship-zoom="out" title="Zoom out" aria-label="Zoom out">-</button>
       <span data-relationship-zoom-value aria-live="polite">100%</span>
       <button type="button" data-relationship-zoom="reset" title="Reset relationship tree view" aria-label="Reset relationship tree view">Reset</button>
@@ -1493,7 +2126,7 @@ function renderRelationshipTree() {
     <div class="relationship-scroll">
       <div class="relationship-viewport">
         <div class="relationship-canvas">
-          <svg class="relationship-lines" viewBox="0 0 ${RELATIONSHIP_CANVAS.width} ${RELATIONSHIP_CANVAS.height}" aria-hidden="true">
+          <svg class="relationship-lines" viewBox="0 0 ${relationshipCanvas.width} ${relationshipCanvas.height}" aria-hidden="true">
             ${links}
             ${labels}
           </svg>
@@ -1835,6 +2468,28 @@ els.relationshipTree.addEventListener("click", (event) => {
   }
   state.selectedRelationshipCharacterId = character.dataset.characterId;
   renderRelationshipTree();
+});
+
+els.relationshipTree.addEventListener("change", (event) => {
+  const minorToggle = event.target.closest("[data-relationship-minors]");
+  if (!minorToggle) {
+    return;
+  }
+
+  state.showMinorCharacters = minorToggle.checked;
+
+  const selectedCharacter = relationshipCharacterById(state.selectedRelationshipCharacterId);
+  if (selectedCharacter?.minor && !state.showMinorCharacters) {
+    state.selectedRelationshipCharacterId = null;
+  }
+
+  renderRelationshipTree();
+
+  const scrollPane = relationshipScrollPane();
+  if (scrollPane) {
+    scrollPane.scrollLeft = 0;
+    scrollPane.scrollTop = 0;
+  }
 });
 
 els.relationshipTree.addEventListener("keydown", (event) => {
